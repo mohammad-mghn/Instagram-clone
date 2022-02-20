@@ -1,0 +1,9 @@
+.loading {
+  height: 2px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(124deg, #ff2400, #e81d1d, #dd00f3, #dd00f3);
+  transition: width 0.5s;
+  border-radius: 0 2px 2px 0;
+}

@@ -1,0 +1,203 @@
+.switch {
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 98%;
+}
+.porofile_img_div {
+  margin-top: 0.25rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 10rem;
+  overflow: hidden;
+}
+.porofile_img {
+  height: 100%;
+  margin-left: 50%;
+  transform: translate(-50%);
+}
+.username_div {
+  width: 65%;
+  height: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  margin-left: 5%;
+}
+.username {
+  all: unset;
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
+  color: #3b3b3b;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: 90%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.name {
+  all: unset;
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
+  color: #3b3b3b;
+  font-weight: 400;
+  font-size: 0.9rem;
+  width: 100%;
+  color: #8e8e8e;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.switch_button {
+  all: unset;
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
+  color: #3b3b3b;
+  font-weight: 600;
+  font-size: 0.75rem;
+  width: 100%;
+  color: #0095f6;
+  cursor: pointer;
+}
+.follow_suggestions {
+  margin-top: 1.25rem;
+  height: fit-content;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+.header {
+  height: 2rem;
+  width: 98%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+.header_title {
+  all: unset;
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
+  color: #8e8e8e;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.see_all {
+  all: unset;
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
+  color: #262626;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-right: 0.125rem;
+  cursor: pointer;
+}
+.suggestion {
+  height: 3rem;
+  width: 98%;
+  padding: 0 0 0 2.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.suggestion_img_div {
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 10rem;
+  overflow: hidden;
+}
+.suggestion_img {
+  height: 100%;
+  margin-left: 50%;
+  transform: translate(-50%);
+  cursor: pointer;
+}
+.suggestion_details {
+  height: 3rem;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 0.75rem;
+}
+.suggestion_username {
+  all: unset;
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
+  color: #3b3b3b;
+  font-weight: 600;
+  font-size: 0.8rem;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.suggestion_username:hover {
+  text-decoration: underline;
+}
+.suggestion_followed {
+  all: unset;
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
+  color: #3b3b3b;
+  font-weight: 400;
+  font-size: 0.75rem;
+  width: 100%;
+  color: #8e8e8e;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: default;
+  margin-top: 0.25rem;
+}
+.suggestion_follow_button {
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
+  color: #262626;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #0095f6;
+  cursor: pointer;
+  margin-right: 0.125rem;
+}
+.links_div {
+  /* background-color: aquamarine; */
+  height: 3rem;
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
+  color: #c7c7c7;
+  font-weight: 600;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+}
+
+.link {
+  all: unset;
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
+  color: #c7c7c7;
+  font-weight: 400;
+  font-size: 0.7rem;
+}
+.link::after {
+  content: "\00B7";
+  position: relative;
+  display: inline-block;
+  margin: 0 0.2rem 0 0.2rem;
+  font-size: 0.75rem;
+}
+.no_dot {
+  all: unset;
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
+  color: #c7c7c7;
+  font-weight: 400;
+  font-size: 0.7rem;
+}
+.no_dot::after {
+  all: none;
+}
+.copyright {
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
+  color: #c7c7c7c7;
+  font-weight: 400;
+  font-size: 0.7rem;
+  margin-top: 0.75rem;
+}

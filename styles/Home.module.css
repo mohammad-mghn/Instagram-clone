@@ -1,0 +1,54 @@
+.container {
+  /* background-color: blue; */
+  width: 60rem;
+  height: fit-content;
+  position: absolute;
+  top: 6rem;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: -100;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 200vh;
+}
+.posts_and_stories {
+  /* background-color: aqua; */
+  width: 39rem;
+  height: 30rem;
+}
+.follow_suggestion {
+  width: 21rem;
+  height: 100vh;
+  padding: 0.9rem 0.25rem 0 1.25rem;
+  position: fixed;
+  top: 6rem;
+  right: calc(50% - 30.5rem);
+  /* background-color: aquamarine; */
+}
+.posts {
+  height: 190vh;
+  width: 100%;
+}
+@media screen and (max-width: 1000px) {
+  .container {
+    width: 40rem;
+  }
+  .follow_suggestion {
+    display: none;
+  }
+}
+@media screen and (max-width: 700px) {
+  .container {
+    width: 38rem;
+  }
+}
+@media screen and (max-width: 660px) {
+  .container {
+    width: 100vw;
+    top: 3.5rem;
+  }
+  .posts {
+    width: 100vw;
+  }
+}

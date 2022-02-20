@@ -1,0 +1,19 @@
+.icon_svg {
+  height: 1.5rem;
+  margin-left: -0.37rem;
+  width: 1.5rem;
+}
+.send_icon_svg {
+  width: 6rem;
+  height: 6rem;
+}
+.account_switcher_btn {
+  transform: rotate(180deg);
+  height: 1.2rem;
+  width: 1.2rem;
+  cursor: pointer;
+}
+.new_chat_btn {
+  width: 1.5rem;
+  height: 1.5rem;
+}
