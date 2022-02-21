@@ -9,44 +9,34 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en.json";
 import EmojiBox from "../emoji_box/emoji_box";
+import { useRouter } from "next/router";
+
 function Post(props) {
   TimeAgo.addLocale(en);
   const timeAgo = new TimeAgo("en-US");
 
-  const date = new Date();
-  const [time, setTime] = useState(
-    props.post.date === undefined ? date.getTime() : props.post.date
-  );
-  const [captionMoreEnabled, setCaptionMoreEnabled] = useState(false);
+  const router = useRouter();
 
+  const comment = useRef(null);
+
+  const date = new Date();
+
+  const [captionMoreEnabled, setCaptionMoreEnabled] = useState(false);
   const [stickers, setStickers] = useState(false);
   const [saved, setSaved] = useState(false);
   const [liked, setLiked] = useState(false);
-  const comment = useRef(null);
   const [postButtonStatus, setPostButtonStatus] = useState("");
-  const [postData, setPostData] = useState(
-    props.post === undefined
-      ? {
-          id: "620cbbe727707974b8c8ba52",
-          image: [
-            "https://cdna.artstation.com/p/assets/images/images/040/054/518/original/dan-santos-final.gif?1627720396",
-            "https://cdna.artstation.com/p/assets/images/images/040/054/518/original/dan-santos-final.gif?1627720396",
-          ],
-          username: "vitoo",
-          location: "tehrern, iren d, asdf ,a ,asd asdfasd",
-          caption:
-            "lorem kasdfa asdf jasldf ;a ksdjl;f kjas;lkd j;laksjd f;lkas ljas;lk ja;lskdjf ;lka; lkajs;ld kfja;lk k;alks jd;laksjdf ;alk ;alksdjf la ;lksdjfl; kja;lk a;lksdfj lorem kasdfa asdf jasldf ;a ksdjl;f kjas;lkd j;laksjd f;lkas ljas;lk ja;lskdjf ;lka; lkajs;ld kfja;lk k;alks jd;laksjdf ;alk ;alksdjf la ;lksdjfl; kja;lk a;lksdfj lorem kasdfa asdf jasldf ;a ksdjl;f kjas;lkd j;laksjd f;lkas ljas;lk ja;lskdjf ;lka; lkajs;ld kfja;lk k;alks jd;laksjdf ;alk ;alksdjf la ;lksdjfl; kja;lk a;lksdfj lorem kasdfa asdf jasldf ;a ksdjl;f kjas;lkd j;laksjd f;lkas ljas;lk ja;lskdjf ;lka; lkajs;ld kfja;lk k;alks jd;laksjdf ;alk ;alksdjf la ;lksdjfl; kja;lk a;lksdfj ",
-          like: 110,
-          comments: [],
-          date: 1645270475000,
-        }
-      : props.post
+  const [time, setTime] = useState(
+    props.post.date === undefined ? date.getTime() : props.post.date
+  );
+  const [CommentLentgh, setCommentLentgh] = useState(
+    props.post.comments === undefined ? 0 : props.post.comments.length
   );
   const newDate = date.getTime() - time;
 
   return (
     <>
-      <div className={post.post}  >
+      <div className={post.post}>
         <header className={post.header}>
           <div className={post.porofile_container}>
             <img
@@ -56,7 +46,14 @@ function Post(props) {
             />
           </div>
           <div className={post.username__location_container}>
-            <h2 className={post.username}>{props.post.username}</h2>
+            <h2
+              onClick={() => {
+                router.push(`/${props.post.username}`);
+              }}
+              className={post.username}
+            >
+              {props.post.username}
+            </h2>
             <h3 className={post.location}>{props.post.location}</h3>
           </div>
           <svg
@@ -220,7 +217,12 @@ function Post(props) {
           </div>
           <div className={post.like_section}>{props.post.like} likes</div>
           <div className={post.caption}>
-            <span className={post.username_in_caption}>
+            <span
+              onClick={() => {
+                router.push(`/${props.post.username}`);
+              }}
+              className={post.username_in_caption}
+            >
               {props.post.username}
             </span>{" "}
             <span className={post.caption_text}>
@@ -256,7 +258,9 @@ function Post(props) {
           <div className={post.comments}>
             {!props.post.comments
               ? ""
-              : `View all ${props.post.comments.length} comments`}
+              : props.post.comments.length === 0
+              ? ""
+              : `View all ` + props.post.comments.length + ` comments`}
           </div>
           <div className={post.date}>
             {timeAgo.format(Date.now() - newDate).toLocaleUpperCase()}
@@ -300,6 +304,20 @@ function Post(props) {
                     ? post.share_comment_button_disabled
                     : post.share_comment_button
                 }
+                onClick={async () => {
+                  props.post.comments.push(comment.current.value);
+                  console.log("post:", JSON.stringify(props.post));
+                  setCommentLentgh((CommentLentgh += 1));
+                  const fetching = await fetch("/api/update", {
+                    method: "POST",
+                    body: JSON.stringify(props.post),
+                    headers: {
+                      "Content-type": "application/json",
+                    },
+                  });
+                  const response = await fetching.json();
+                  console.log("reponsive:", response);
+                }}
               >
                 Post
               </button>
@@ -312,6 +330,7 @@ function Post(props) {
       {stickers ? (
         <div className={post.emoji_box}>
           <EmojiBox
+            array="bottom"
             emojiClicked={(e) => {
               console.log(e);
               comment.current.value += e;

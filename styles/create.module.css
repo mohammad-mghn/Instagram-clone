@@ -508,6 +508,11 @@
     "Helvetica Neue", sans-serif;
   font-weight: 400;
 }
+.EmojiBox {
+  background-color: #0095f6;
+  position: relative;
+  top: -0.5rem;
+}
 @media screen and (max-width: 1000px) {
   .create_main_section_share {
     border-radius: 2.2vw;
@@ -579,6 +584,12 @@
   }
   .exit_discard_button {
     margin-top: 1.5rem;
+  }
+  .EmojiBox {
+    background-color: #0095f6;
+    position: relative;
+    top: -0rem;
+    z-index: 10;
   }
 }
 @media screen and (max-width: 600px) {

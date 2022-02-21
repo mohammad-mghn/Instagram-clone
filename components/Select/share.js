@@ -9,6 +9,7 @@ const Picker = dynamic(() => import("emoji-picker-react"), { ssr: false });
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import EmojiBox from "../emoji_box/emoji_box";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -16,7 +17,6 @@ import "swiper/css/pagination";
 
 import { Navigation } from "swiper";
 function ShareComponent(props) {
- 
   const date = new Date();
   return (
     <div className={styles.create_main_section_share}>
@@ -126,15 +126,18 @@ function ShareComponent(props) {
             </svg>
             <h5 className={styles.caption_count}>{props.counter}/2000</h5>
           </div>
-          {props.emoji ? (
-            <Picker
-              onEmojiClick={props.emojiHandler}
-              native
-              className={styles.picker}
-            />
-          ) : (
-            ""
-          )}
+          <div className={styles.EmojiBox}>
+            {props.emoji ? (
+              <EmojiBox
+                array="top"
+                emojiClicked={(e) => {
+                  props.emojiHandler(e);
+                }}
+              />
+            ) : (
+              ""
+            )}
+          </div>
           <section className={styles.location_main_div}>
             <input
               className={styles.location_input}

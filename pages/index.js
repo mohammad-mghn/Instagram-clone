@@ -29,6 +29,7 @@ export default function Home(props) {
     const data = await response.json();
     setLoading(100);
     setposts(data);
+    console.log(data);
   }
   useEffect(() => {
     addpostHandler();

@@ -80,8 +80,8 @@ function Select() {
       setSelect("review");
     }
   };
-  const emojiHandler = (event, emojiObject) => {
-    caption.current.value = caption.current.value + emojiObject.emoji;
+  const emojiHandler = (emoji) => {
+    caption.current.value += emoji;
     captionValueHandler();
   };
   const commentsHandler = () => {
