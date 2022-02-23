@@ -23,6 +23,7 @@
 }
 .porofile {
   height: 100%;
+  cursor: pointer;
 }
 .username__location_container {
   width: 80%;
@@ -47,7 +48,7 @@
   cursor: pointer;
 }
 .post_media {
-  background-color: rgb(81, 255, 0);
+  background-color: #ffffff;
   width: 100%;
   height: 38rem;
 }
@@ -66,7 +67,7 @@
   height: 103%;
   width: 100%;
   overflow: hidden;
-  background-color: aquamarine;
+  background-color: rgb(206, 206, 206);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -152,12 +153,8 @@
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
-  height: 3rem;
+  height: fit-content;
   width: 50%;
-  /* background-color: blue; */
-  /* text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden; */
 }
 .dots {
   color: #262626;
@@ -200,6 +197,7 @@
 }
 .sticker {
   margin-left: 0.95rem;
+  cursor: pointer;
 }
 .add_comment_input {
   all: unset;
@@ -233,7 +231,6 @@
   cursor: default;
 }
 .emoji_box {
-  background-color: #0095f6;
   position: relative;
   top: -27.75rem;
 }

@@ -4,7 +4,6 @@ import React from "react";
 import posts from "./posts.module.css";
 
 import Post from "../post/post";
-
 function Posts(props) {
   return (
     <div className={posts.cantainer}>
