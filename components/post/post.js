@@ -323,7 +323,12 @@ function Post(props) {
               ""
             )}
           </div>
-          <div className={post.comments}>
+          <div
+            onClick={() => {
+              router.push("/p/" + props.post.id);
+            }}
+            className={post.comments}
+          >
             {!props.post.comments
               ? ""
               : props.post.comments.length === 0

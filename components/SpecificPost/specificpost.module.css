@@ -1,0 +1,157 @@
+.container {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translate(-50%);
+  height: 37rem;
+  width: 54rem;
+  display: flex;
+  border: 1px solid rgba(219, 219, 219, 1);
+}
+.post_media_section {
+  width: 33rem;
+}
+.slider {
+  width: 100%;
+  height: 100%;
+}
+.post_div {
+  width: 100%;
+  height: 100%;
+}
+.post {
+  width: 100%;
+  height: 100%;
+}
+.post_data {
+  width: 100%;
+  height: 100%;
+}
+.header {
+  height: 4.25rem;
+  width: 21rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(219, 219, 219, 1);
+}
+.porofile_container {
+  margin-left: 0.85rem;
+  height: 2.45rem;
+  width: 2.8rem;
+  border-radius: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.porofile {
+  height: 100%;
+  cursor: pointer;
+}
+.username__location_container {
+  width: 80%;
+  margin-left: 0.75rem;
+  overflow: hidden;
+}
+.username {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.925rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.location {
+  font-family: "Segoe UI", "Roboto", Helvetica, Arial, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #8e8e8e;
+  cursor: pointer;
+}
+.menu {
+  margin-right: 5%;
+  height: 1.8rem;
+  width: 1.8rem;
+  cursor: pointer;
+}
+.comments_and_caption_section {
+  width: 21rem;
+  height: 22.5rem;
+  overflow-y: scroll;
+}
+.comments_and_caption_section::-webkit-scrollbar {
+  display: none;
+}
+.caption {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  margin-bottom: 1rem;
+}
+.porofile_section {
+  height: 100%;
+  width: 19%;
+  display: flex;
+  justify-items: center;
+}
+.porofile_container_in_caption {
+  margin: 25% 0 0 0.85rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.caption_section {
+  padding: 5% 3% 0 3%;
+  overflow-x: hidden;
+  height: fit-content;
+  width: calc(21rem - 19%);
+}
+.username_in_caption {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.username_in_caption:hover {
+  text-decoration: underline;
+}
+/* .caption {
+  background-color: blueviolet;
+  height: 100%;
+  width: 81%;
+} */
+.caption_text {
+  color: #262626;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  height: fit-content;
+  width: 50%;
+}
+.dots {
+  color: #262626;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  height: 3rem;
+  width: 50%;
+  /* background-color: rgb(255, 153, 0); */
+}
+.more_button {
+  all: unset;
+  color: #8e8e8e;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+.date_div {
+  height: 1rem;
+  color: #8e8e8e;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.675rem;
+  margin-top: 0.75rem;
+  font-weight: 500;
+}

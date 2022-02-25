@@ -8,8 +8,10 @@ import story from "../components/stories/stories.module.css";
 
 import Stories from "../components/stories/stories";
 import Posts from "../components/posts/posts";
+import { useRouter } from "next/router";
 
 export default function Home(props) {
+  const router = useRouter();
   const [loading, setLoading] = useState(60);
   const [posts, setposts] = useState([
     {
@@ -37,6 +39,7 @@ export default function Home(props) {
   return (
     <Loading width={loading}>
       <div className={styles.container}>
+        
         <section className={styles.posts_and_stories}>
           <section className={story.container}>
             <div className={story.story}>
