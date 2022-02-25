@@ -383,7 +383,6 @@ function Post(props) {
                 onClick={async () => {
                   setStickers(false);
                   if (comment.current.value !== "") {
-                    comment.current.value = "";
                     setPostButtonStatus("");
                     props.post.comments.push(comment.current.value);
                     console.log("post:", JSON.stringify(props.post));
@@ -397,6 +396,7 @@ function Post(props) {
                     });
                     const response = await fetching.json();
                   }
+                  comment.current.value = "";
                 }}
               >
                 Post
