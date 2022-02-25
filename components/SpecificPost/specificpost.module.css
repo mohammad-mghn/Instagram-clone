@@ -76,6 +76,7 @@
   width: 21rem;
   height: 22.5rem;
   overflow-y: scroll;
+  background-color: aqua;
 }
 .comments_and_caption_section::-webkit-scrollbar {
   display: none;
@@ -84,7 +85,8 @@
   width: 100%;
   height: fit-content;
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom:.8rem;
+  background-color: rgb(38, 0, 255);
 }
 .porofile_section {
   height: 100%;

@@ -104,14 +104,11 @@ const Specificpost = (props) => {
               </div>
             </div>
           </div>
-          <div>
-            a asdfasdfasdfasdf
-            <br /> asdfasdfasdfasdfasdf asdfas asdf
-            <br /> asdfasdfasdfasdfasdf asdfas asdf
-            <br /> asdfasdfasdfasdfasdf asdfas asdf
-            <br /> asdfasdfasdfasdfasdf asdfas asdf
-            <br /> asdfasdfasdfasdfasdf asdfas asdf
-            <br /> asdfasdfasdfasdfasdf asdfas asdf
+          <div className={style.comments}>
+            <div className={style.comment_container}>
+              asdfas
+            </div>
+           
           </div>
         </section>
       </section>
