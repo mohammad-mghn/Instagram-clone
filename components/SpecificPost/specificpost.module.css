@@ -10,17 +10,18 @@
 }
 .post_media_section {
   width: 33rem;
+  border-right: 1px solid rgba(219, 219, 219, 1);
 }
 .slider {
-  width: 100%;
+  width: 33rem;
   height: 100%;
 }
 .post_div {
-  width: 100%;
+  width: 33rem;
   height: 100%;
 }
 .post {
-  width: 100%;
+  width: 33rem;
   height: 100%;
 }
 .post_data {
@@ -43,6 +44,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  border: 1px solid #3b3b3b;
 }
 .porofile {
   height: 100%;
@@ -84,7 +86,6 @@
   width: 100%;
   height: fit-content;
   display: flex;
-  margin-bottom: 1rem;
 }
 .porofile_section {
   height: 100%;
@@ -103,25 +104,26 @@
   overflow: hidden;
 }
 .caption_section {
-  padding: 5% 3% 0 3%;
+  padding: 4% 5% 0 0;
+  overflow-x: hidden;
+  height: fit-content;
+  width: calc(21rem - 19%);
+}
+.comment_caption_section {
+  padding: 1% 0 0 3%;
   overflow-x: hidden;
   height: fit-content;
   width: calc(21rem - 19%);
 }
 .username_in_caption {
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
 }
 .username_in_caption:hover {
   text-decoration: underline;
 }
-/* .caption {
-  background-color: blueviolet;
-  height: 100%;
-  width: 81%;
-} */
 .caption_text {
   color: #262626;
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -130,24 +132,10 @@
   height: fit-content;
   width: 50%;
 }
-.dots {
-  color: #262626;
-  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-  height: 3rem;
-  width: 50%;
-  /* background-color: rgb(255, 153, 0); */
+.comments {
+  margin-top: 0.8rem;
 }
-.more_button {
-  all: unset;
-  color: #8e8e8e;
-  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-  cursor: pointer;
-}
-.date_div {
+.date {
   height: 1rem;
   color: #8e8e8e;
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -155,37 +143,302 @@
   margin-top: 0.75rem;
   font-weight: 500;
 }
-@media screen and (max-width: 700px) {
+.comment_porofile_container_in_caption {
+  margin: 5% 0 0 0.85rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #dddddd;
+}
+.comment_container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  margin-bottom: 0.8rem;
+}
+.like_svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  cursor: pointer;
+}
+.like_svg:active {
+  transform: scale(0.95);
+  fill: #8e8e8e;
+}
+.information_div {
+  display: flex;
+  align-items: center;
+}
+.comment_like {
+  height: 1rem;
+  color: #8e8e8e;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.675rem;
+  margin-top: 0.75rem;
+  font-weight: 500;
+  margin-left: 0.6rem;
+  cursor: pointer;
+}
+.reply_button {
+  height: 1rem;
+  color: #8e8e8e;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.675rem;
+  margin-top: 0.75rem;
+  font-weight: 500;
+  margin-left: 0.6rem;
+  cursor: pointer;
+}
+.controlers_section {
+  height: 10.25rem;
+  width: 100%;
+  border-top: 1px solid rgba(219, 219, 219, 1);
+}
+.buttons_section {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+}
+.buttons_icon {
+  margin-left: 0.7rem;
+  height: 1.4rem;
+  width: 1.4rem;
+  cursor: pointer;
+}
+.like_icon {
+  margin-left: 0.95rem;
+  height: 1.4rem;
+  width: 1.4rem;
+  cursor: pointer;
+  animation: zoom_in 0.5s;
+  transition: all 0.1s;
+}
+.like_icon_liked {
+  margin-left: 0.95rem;
+  height: 1.4rem;
+  width: 1.4rem;
+  cursor: pointer;
+  animation: zoom_in 0.5s;
+  transition: all 0.1s;
+}
+.buttons_icon_save {
+  width: 1.4rem;
+  margin-left: 12.25rem;
+  cursor: pointer;
+}
+.buttons_icon_save_nocomment {
+  height: 1.55rem;
+  margin-left: 31.65rem;
+  cursor: pointer;
+}
+
+.buttons_icon:active,
+.buttons_icon_save:active,
+.like_icon:active,
+.like_icon_liked:active {
+  transform: scale(0.9);
+}
+.like_section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14%;
+}
+.liked_section {
+  width: 60%;
+  font-size: 0.95rem;
+  color: #262626;
+  padding-left: 0.95rem;
+  overflow: hidden;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+.post_date {
+  height: 1rem;
+  color: #8e8e8e;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.675rem;
+  font-weight: 500;
+  width: 100%;
+  font-weight: 400;
+  margin: 0.5rem 0 0.5rem 0;
+  padding-left: 0.95rem;
+}
+.add_comment_div {
+  /* background-color: aqua; */
+  width: 100%;
+  height: 3rem;
+  margin-top: 0.95rem;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgba(219, 219, 219, 1);
+}
+.sticker {
+  margin-left: 0.95rem;
+  cursor: pointer;
+}
+.add_comment_input {
+  all: unset;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin-left: 1rem;
+  font-size: 0.85rem;
+  height: 1.3rem;
+  width: 14.25rem;
+}
+.add_comment_input::placeholder {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #8e8e8e;
+  font-size: 0.95rem;
+}
+.share_comment_button {
+  all: unset;
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-left: 0.75rem;
+  cursor: pointer;
+  color: #0094f6;
+}
+.share_comment_button_disabled {
+  all: unset;
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #0094f67e;
+  margin-left: 0.75rem;
+  cursor: default;
+}
+.emoji_box {
+  position: relative;
+  top: -24rem;
+}
+@media screen and (max-width: 600px) {
   .container {
     position: absolute;
     top: 5vw;
     left: 50%;
     transform: translate(-50%);
-    height: 88vh;
+    height: fit-content;
     width: 95vw;
     display: flex;
     flex-direction: column;
     border: 1px solid rgba(219, 219, 219, 1);
-    background-color: aqua;
   }
-  .post_div {
-    height: 95vw;
-    width: 95vw;
-    margin-bottom: 26vw;
+  .porofile_section {
+    width: 14%;
   }
-  .post_data {
-    height: 95vw;
-    width: 95vw;
+  .caption_section {
+    width: calc(95vw - 10%);
+    margin-left: 5%;
+  }
+  .porofile {
+    height: 10vw;
+    width: 10vw;
+  }
+  .comment_caption_section {
+    margin-left: 4%;
+    width: calc(95vw - 10%);
   }
   .post_media_section {
-    width: 100%;
-    height: 90vw;
-    /* margin-bottom: 21vw; */
-    border-bottom: 1px solid rgba(219, 219, 219, 1);
+    display: none;
   }
   .header {
-    width: 100%;
-    height: 15vw;
-    background-color: aquamarine;
+    display: none;
+  }
+  .comments_and_caption_section {
+    width: 95vw;
+    height: 81vh;
+    border: none;
+  }
+  .controlers_section {
+    height: fit-content;
+  }
+  .buttons_section {
+    height: 10vw;
+    display: none;
+  }
+  .buttons_icon_save {
+    margin-left: 61vw;
+    height: fit-content;
+  }
+  .liked_section {
+    display: none;
+  }
+  .post_date {
+    display: none;
+  }
+  .add_comment_div {
+    height: 13vw;
+    margin-top: -1vw;
+    border: none;
+    justify-content: space-around;
+  }
+  .sticker {
+    margin-left: 0;
+  }
+  .add_comment_input {
+    width: 70vw;
+    margin-left: 0;
+  }
+  .share_comment_button {
+    margin-left: 0;
+  }
+  .share_comment_button_disabled {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    position: absolute;
+    top: 5vw;
+    left: 50%;
+    transform: translate(-50%);
+    height: fit-content;
+    width: 95vw;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(219, 219, 219, 1);
+  }
+  .post_media_section {
+    display: none;
+  }
+  .header {
+    display: none;
+  }
+  .comments_and_caption_section {
+    width: 95vw;
+    height: 81vh;
+    border: none;
+  }
+  .controlers_section {
+    height: fit-content;
+  }
+  .buttons_section {
+    height: 10vw;
+    display: none;
+  }
+  .buttons_icon_save {
+    margin-left: 61vw;
+    height: fit-content;
+  }
+  .liked_section {
+    display: none;
+  }
+  .post_date {
+    display: none;
+  }
+  .add_comment_div {
+    height: 13vw;
+    margin-top: -1vw;
+    border: none;
+  }
+  .add_comment_input {
+    width: 64vw;
   }
 }

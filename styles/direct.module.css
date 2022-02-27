@@ -24,6 +24,7 @@
   height: 9%;
   display: flex;
   align-items: center;
+  background-color: #0095f6;
 }
 .account {
   height: 2rem;
@@ -162,4 +163,33 @@
   color: #3b3b3b;
   font-weight: 600;
   font-size: 0.9rem;
+}
+@media screen and (max-width: 900px) {
+  .container {
+    width: 98vw;
+    min-height: 90vh;
+    height: fit-content;
+    background-color: #0095f6;
+  }
+  .account_new_chat {
+    height: 3.5rem;
+  }
+  .contacts_container {
+    width: 100%;
+    min-height: 90vh;
+    border-right: none;
+  }
+  .messages_container {
+    display: none;
+  }
+  .account_new_chat {
+    justify-content: space-between;
+  }
+  .account {
+    transform: none;
+    margin-left: 1rem;
+  }
+  .new_chat_button {
+    margin-right: 0.75rem;
+  }
 }

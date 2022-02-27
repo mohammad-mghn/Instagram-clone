@@ -125,7 +125,6 @@ function Post(props) {
                     setLiked(false);
                     setLike((like -= 1));
                     props.post.like = like;
-                    setCommentLentgh((CommentLentgh += comment.current.value));
                     const fetching = await fetch("/api/updateLike", {
                       method: "POST",
                       body: JSON.stringify(props.post),
@@ -152,7 +151,6 @@ function Post(props) {
                     setLiked(true);
                     setLike((like += 1));
                     props.post.like = like;
-                    setCommentLentgh((CommentLentgh += comment.current.value));
                     const fetching = await fetch("/api/updateLike", {
                       method: "POST",
                       body: JSON.stringify(props.post),
@@ -383,7 +381,6 @@ function Post(props) {
                 onClick={async () => {
                   setStickers(false);
                   if (comment.current.value !== "") {
-                    comment.current.value = "";
                     setPostButtonStatus("");
                     props.post.comments.push(comment.current.value);
                     console.log("post:", JSON.stringify(props.post));
@@ -397,6 +394,7 @@ function Post(props) {
                     });
                     const response = await fetching.json();
                   }
+                  comment.current.value = "";
                 }}
               >
                 Post
