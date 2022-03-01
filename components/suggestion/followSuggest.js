@@ -60,34 +60,55 @@ function FollowSuggest() {
         />
       </section>
       <section className={follow.links_div}>
-        <a href="" className={follow.link}>
+        <a href="https://about.instagram.com/" className={follow.link}>
           About
         </a>
-        <a href="" className={follow.link}>
+        <a href="https://help.instagram.com/" className={follow.link}>
           Help
         </a>
-        <a href="" className={follow.link}>
+        <a href="https://about.instagram.com/blog/" className={follow.link}>
           Press
         </a>
-        <a href="" className={follow.link}>
+        <a
+          href="https://developers.facebook.com/docs/instagram"
+          className={follow.link}
+        >
           API
         </a>
-        <a href="" className={follow.link}>
+        <a
+          href="https://about.instagram.com/about-us/careers"
+          className={follow.link}
+        >
           Jobs
         </a>
-        <a href="" className={follow.link}>
+        <a
+          href="https://help.instagram.com/519522125107875/?maybe_redirect_pol=0"
+          className={follow.link}
+        >
           Privacy
         </a>
-        <a href="" className={follow.link}>
+        <a
+          href="https://help.instagram.com/581066165581870"
+          className={follow.link}
+        >
           Terms
         </a>
-        <a href="" className={follow.link}>
+        <a
+          href="https://www.instagram.com/explore/locations/"
+          className={follow.link}
+        >
           Locaitions
         </a>
-        <a href="" className={follow.link}>
+        <a
+          href="https://www.instagram.com/directory/profiles/"
+          className={follow.link}
+        >
           Top Accounts
         </a>
-        <a href="" className={follow.link}>
+        <a
+          href="https://www.instagram.com/directory/hashtags/"
+          className={follow.link}
+        >
           Hashtags
         </a>
         <a href="" className={follow.no_dot}>

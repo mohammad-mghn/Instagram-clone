@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
 
 import {
@@ -12,7 +13,7 @@ import {
   LikeIcon,
   LikeIconClicked,
 } from "../../Assists/svgs/svgs";
-
+import loader from "../../Assists/loader.svg";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
@@ -24,10 +25,12 @@ import SearchLogo from "../../Assists/search_icon.png";
 
 function Navbar(props) {
   const router = useRouter();
+  const [likes, setLikes] = useState(false);
+  const [navbar, setNavbar] = useState(router.pathname);
   useEffect(() => {
     setNavbar(router.pathname);
+    setLikes(false);
   }, [router.pathname]);
-  const [navbar, setNavbar] = useState(router.pathname);
   // var loadFile = function (event) {
   //   var output = document.getElementById("output");
   //   console.log(event);
@@ -115,7 +118,6 @@ function Navbar(props) {
               className={styles.menu_icon_button}
               onClick={() => {
                 setNavbar("/liked/inbox");
-                router.push("/liked/inbox");
               }}
             >
               <Link href={"/liked/inbox"}>

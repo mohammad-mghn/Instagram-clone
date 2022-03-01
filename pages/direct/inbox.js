@@ -3,7 +3,7 @@ import styles from "../../styles/direct.module.css";
 import Direct from "../../components/direct/direct";
 import Loading from "../../components/loading/loading";
 import { useRouter } from "next/router";
-import New from "./new";
+import Head from "next/head";
 import {
   Megajs,
   SendButton,
@@ -19,6 +19,9 @@ function Inbox() {
   const [newChat, senewChat] = useState(true);
   return (
     <Loading width={loading}>
+      <Head>
+        <title>Inbox • Direct</title>
+      </Head>
       <div
         onLoadCapture={() => {
           setTimeout(() => {
