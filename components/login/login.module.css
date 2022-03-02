@@ -1,0 +1,125 @@
+.con {
+  position: absolute;
+  top: 3.7rem;
+  width: 100%;
+  height: fit-content;
+  min-height: calc(100% - 3.7rem);
+  display: flex;
+  justify-content: center;
+  height: min-content;
+}
+.main_section {
+  height: 40rem;
+  width: 50rem;
+  margin-top: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: rgb(8, 186, 186); */
+}
+.phones_section {
+  /* background-color: chartreuse; */
+  height: 100%;
+  width: 27rem;
+}
+.phone_screen {
+  position: relative;
+  left: 9.25rem;
+  top: -32.85rem;
+  height: 27.15rem;
+  width: 15.38rem;
+}
+.form_section {
+  /* background-color: blueviolet; */
+  width: 30rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login_form {
+  /* background-color: aqua; */
+  height: fit-content;
+  width: 22rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #c9c9c9;
+  background-color: #fff;
+}
+.instagram_logo_div {
+  height: fit-content;
+  width: 100%;
+  /* margin: 2.5rem 0 0 0; */
+  /* background-color: aquamarine; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.instargam_logo {
+  width: 11.5rem;
+}
+.inputs {
+  /* background-color: burlywood; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input {
+  all: unset;
+  border: 1px solid #c9c9c9;
+  background-color: #fcfcfc;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.7rem;
+  padding: 0 0 0 0.5rem;
+  width: 18rem;
+  height: 2rem;
+  color: #262626;
+  border-radius: 0.125rem;
+  margin-bottom: 0.5rem;
+}
+.input::placeholder {
+  color: #7e7e7e;
+}
+.login_in_btn {
+  all: unset;
+  background-color: #fcfcfc;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  width: 18.7rem;
+  height: 1.85rem;
+  color: #ffffff;
+  border-radius: 0.25rem;
+  text-align: center;
+  margin-left: 1.6rem;
+  background-color: #0095f6;
+}
+.login_in_btn_disabled {
+  all: unset;
+  background-color: #fcfcfc;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  width: 18.7rem;
+  height: 1.85rem;
+  color: #ffffff;
+  border-radius: 0.25rem;
+  text-align: center;
+  margin-left: 1.6rem;
+  background-color: #0094f670;
+}
+.forget_password {
+  all: unset;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  width: 100%;
+  height: 1rem;
+  color: #00376b;
+  border-radius: 0.25rem;
+  text-align: center;
+  margin: 1.35rem 0 1.3rem 0;
+  background-color: #fff;
+}

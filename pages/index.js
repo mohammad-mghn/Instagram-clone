@@ -9,7 +9,8 @@ import story from "../components/stories/stories.module.css";
 import Stories from "../components/stories/stories";
 import Posts from "../components/posts/posts";
 import { useRouter } from "next/router";
-
+import Login from "../components/login/login";
+// console.log(localStorage.getItem("user"));
 export default function Home(props) {
   const router = useRouter();
   const [loading, setLoading] = useState(60);
@@ -36,10 +37,20 @@ export default function Home(props) {
   useEffect(() => {
     addpostHandler();
   }, []);
+  if (typeof window !== "undefined") {
+    console.log("we are running on the client");
+    // localStorage.setItem("user", JSON.stringify({ username: "Asdfadsf" }));
+    // localStorage.removeItem("user");
+    if (localStorage.getItem("user") === null) {
+      return <Login />;
+    }
+  } else {
+    console.log("we are running on the server");
+  }
+
   return (
     <Loading width={loading}>
       <div className={styles.container}>
-        
         <section className={styles.posts_and_stories}>
           <section className={story.container}>
             <div className={story.story}>
@@ -116,3 +127,9 @@ export default function Home(props) {
   })}
 </Swiper>; */
 }
+// export async function getServerSideProps(context) {
+
+//   return {
+//     props: {}, // will be passed to the page component as props
+//   };
+// }
