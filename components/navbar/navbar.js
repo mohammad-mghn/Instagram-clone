@@ -27,7 +27,18 @@ function Navbar(props) {
   const router = useRouter();
   const [likes, setLikes] = useState(false);
   const [navbar, setNavbar] = useState(router.pathname);
+  const [display, setDisplay] = useState(true);
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      console.log("we are running on the client");
+      // localStorage.setItem("user", JSON.stringify({ username: "Asdfadsf" }));
+      // localStorage.removeItem("user");
+      if (localStorage.getItem("user") === null) {
+        setDisplay(false);
+      }
+    } else {
+      console.log("we are running on the server");
+    }
     setNavbar(router.pathname);
     setLikes(false);
   }, [router.pathname]);
@@ -43,7 +54,10 @@ function Navbar(props) {
   // };
 
   return (
-    <nav className={styles.nav}>
+    <nav
+      className={styles.nav}
+      style={{ display: display ? "inline" : "none" }}
+    >
       <div className={styles.container}>
         <div className={styles.logo_div}>
           <Image
