@@ -1,31 +1,10 @@
 .container {
-  width: 100%;
-  height: fit-content;
   min-height: 100vh;
+  width: 100%;
   display: flex;
-  align-items: center;
   flex-direction: column;
-}
-.main_section {
-  height: 40rem;
-  width: 50rem;
-  margin-top: 2rem;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  /* background-color: rgb(8, 186, 186); */
-}
-.phones_section {
-  /* background-color: chartreuse; */
-  height: 100%;
-  width: 27rem;
-}
-.phone_screen {
-  position: relative;
-  left: 9.25rem;
-  top: -32.85rem;
-  height: 27.15rem;
-  width: 15.38rem;
+  justify-content: center;
 }
 .form_section {
   /* background-color: blueviolet; */
@@ -59,6 +38,16 @@
 .instargam_logo {
   width: 12.5rem;
   /* margin-top: -2rem; */
+}
+.description {
+  margin: -2rem 0 1rem 0;
+  width: 100%;
+  padding: 0 2rem 0 2rem;
+  color: #8e8e8e;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
 }
 .inputs {
   /* background-color: burlywood; */
@@ -125,31 +114,25 @@
   margin-left: 1.6rem;
   background-color: #0094f670;
 }
-.forget_password {
-  all: unset;
-  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 0.8rem;
-  font-weight: 400;
-  width: fit-content;
-  height: 1rem;
-  color: #00376b;
-  border-radius: 0.25rem;
-  text-align: center;
-  margin: 1.35rem 0 1.3rem 50%;
-  transform: translateX(-50%);
-  background-color: #fff;
-  cursor: pointer;
-}
-.forget_password:active,
 .login_in_btn:active,
 .show_hide_btn:active {
   opacity: 0.6;
+}
+.terms_description {
+  margin: 1rem 0 2rem 0;
+  width: 100%;
+  padding: 0 2rem 0 2rem;
+  color: #8e8e8e;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-align: center;
 }
 .erorr_txt {
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   text-align: center;
   color: #ed4956;
-  padding: 0 1.6rem 0 1.6rem;
+  padding: 0 2.6rem 0 2.6rem;
   margin: 1rem 0 0 0;
   font-size: 0.85rem;
 }
@@ -241,12 +224,6 @@
   margin-left: 1.5rem;
 }
 @media screen and (max-width: 870px) {
-  .main_section {
-    justify-content: center;
-  }
-  .phones_section {
-    display: none;
-  }
   .links {
     width: 90vw;
   }

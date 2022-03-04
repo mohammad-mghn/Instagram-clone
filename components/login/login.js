@@ -1,9 +1,13 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @next/next/link-passhref */
+/* eslint-disable @next/next/no-img-element */
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import style from "./login.module.css";
 import Image from "next/image";
 import InstargamPicture from "../../Assists/735145cfe0a4.png";
 function Login() {
+  var date = new Date();
   const [loginError, setLoginError] = useState(false);
   const [loginEmailButtonStatus, setLoginEmailButtonStatus] = useState("");
   const [loginPasswordButtonStatus, setLoginPasswordButtonStatus] =
@@ -34,7 +38,7 @@ function Login() {
   }, []);
 
   return (
-    <section className={style.con}>
+    <section className={style.container}>
       <section className={style.main_section}>
         <section className={style.phones_section}>
           <img
@@ -53,11 +57,11 @@ function Login() {
           >
             <div className={style.instagram_logo_div}>
               <img
-                src={"https://i.imgur.com/4j6Ya2k.jpg"}
+                src={
+                  "https://iconape.com/wp-content/files/mc/369575/png/369575.png"
+                }
                 alt=""
                 className={style.instargam_logo}
-                // width="170"
-                // height="45"
               />
             </div>
             <div className={style.inputs}>
@@ -83,7 +87,7 @@ function Login() {
                       loginPasswordButtonStatus !== ""
                         ? passwordIsShowing
                           ? "-1rem"
-                          : "-0.75rem"
+                          : "-0.65rem"
                         : "",
                   }}
                   placeholder="Password"
@@ -134,12 +138,11 @@ function Login() {
             )}
             <button
               onClick={() => {
-                setLoginError(true);
-                // alert("Sorry, but It's none of my business😂😂😊");
+                alert("Sorry, but It's none of my business😂😂😊");
               }}
               className={style.forget_password}
             >
-              Forget password?
+              Forgot password?
             </button>
           </form>
           <section className={style.sign_up_section}>
@@ -151,19 +154,142 @@ function Login() {
           <section className={style.get_apps}>
             <div className={style.get_apps_txt}>Get the app.</div>
             <div className={style.stores_section}>
-              <img
-                src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/180ae7a0bcf7.png"
-                alt=""
-                className={style.store_box}
-              />
-              <img
-                src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/e9cd846dc748.png"
-                alt=""
-                className={style.store_box}
-              />
+              <a target={"_blank"} rel="noreferrer" href="https:/lcoalhosttt">
+                <img
+                  src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/180ae7a0bcf7.png"
+                  alt=""
+                  className={style.store_box}
+                />
+              </a>
+              <a target={"_blank"} rel="noreferrer" href="https:/lcoalhosttt">
+                <img
+                  src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/e9cd846dc748.png"
+                  alt=""
+                  className={style.store_box}
+                />
+              </a>
             </div>
           </section>
         </section>
+      </section>
+      <section className={style.links}>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Meta
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          About
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Blog
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Jobs
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Help
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          API
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Privacy
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Terms
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Top
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Accounts
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Hashtags
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Locations
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Instagram
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Lite
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Dance
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Food & Drink
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Home & Garden
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Music
+        </a>
+        <a href="https://about.facebook.com/meta" className={style.link}>
+          Visual Arts
+        </a>
+      </section>
+      <section className={style.copy_right_and_language}>
+        <select
+          aria-label="Switch Display Language"
+          className={style.language_select}
+        >
+          <option value="af">Afrikaans</option>
+          <option value="cs">Čeština</option>
+          <option value="da">Dansk</option>
+          <option value="de">Deutsch</option>
+          <option value="el">Ελληνικά</option>
+          <option value="en">English</option>
+          <option value="en-gb">English (UK)</option>
+          <option value="es">Español (España)</option>
+          <option value="es-la">Español</option>
+          <option value="fi">Suomi</option>
+          <option value="fr">Français</option>
+          <option value="id">Bahasa Indonesia</option>
+          <option value="it">Italiano</option>
+          <option value="ja">日本語</option>
+          <option value="ko">한국어</option>
+          <option value="ms">Bahasa Melayu</option>
+          <option value="nb">Norsk</option>
+          <option value="nl">Nederlands</option>
+          <option value="pl">Polski</option>
+          <option value="pt-br">Português (Brasil)</option>
+          <option value="pt">Português (Portugal)</option>
+          <option value="ru">Русский</option>
+          <option value="sv">Svenska</option>
+          <option value="th">ภาษาไทย</option>
+          <option value="tl">Filipino</option>
+          <option value="tr">Türkçe</option>
+          <option value="zh-cn">中文(简体)</option>
+          <option value="zh-tw">中文(台灣)</option>
+          <option value="bn">বাংলা</option>
+          <option value="gu">ગુજરાતી</option>
+          <option value="hi">हिन्दी</option>
+          <option value="hr">Hrvatski</option>
+          <option value="hu">Magyar</option>
+          <option value="kn">ಕನ್ನಡ</option>
+          <option value="ml">മലയാളം</option>
+          <option value="mr">मराठी</option>
+          <option value="ne">नेपाली</option>
+          <option value="pa">ਪੰਜਾਬੀ</option>
+          <option value="si">සිංහල</option>
+          <option value="sk">Slovenčina</option>
+          <option value="ta">தமிழ்</option>
+          <option value="te">తెలుగు</option>
+          <option value="vi">Tiếng Việt</option>
+          <option value="zh-hk">中文(香港)</option>
+          <option value="bg">Български</option>
+          <option value="fr-ca">Français (Canada)</option>
+          <option value="ro">Română</option>
+          <option value="sr">Српски</option>
+          <option value="uk">Українська</option>
+        </select>
+
+        <div className={style.copy_right_part}>
+          © {date.getFullYear()} Instagram from Meta
+        </div>
       </section>
     </section>
   );
