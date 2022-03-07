@@ -1,31 +1,40 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable @next/next/link-passhref */
 /* eslint-disable @next/next/no-img-element */
+/* eslint-disable @next/next/link-passhref */
+/* eslint-disable react/no-unescaped-entities */
+
 import React, { useRef, useState, useEffect } from "react";
+
 import Link from "next/link";
+import Head from "next/head";
+import { useRouter } from "next/router";
+
 import style from "./login.module.css";
-import Image from "next/image";
-import InstargamPicture from "../../Assists/735145cfe0a4.png";
+
 function Login() {
-  var date = new Date();
-  const [loginError, setLoginError] = useState(false);
-  const [loginEmailButtonStatus, setLoginEmailButtonStatus] = useState("");
-  const [loginPasswordButtonStatus, setLoginPasswordButtonStatus] =
-    useState("");
+  const router = useRouter();
+
   const emailInput = useRef();
   const passwordInput = useRef();
+
+  var date = new Date();
+
+  const [loginError, setLoginError] = useState(false);
+  const [loginEmailButtonStatus, setLoginEmailButtonStatus] = useState("");
+  const [passwordIsShowing, setPasswordIsShowing] = useState(false);
+  const [loginPasswordButtonStatus, setLoginPasswordButtonStatus] =
+    useState("");
   const [imgSrc, setimgSrc] = useState(
     "https://www.instagram.com/static/images/homepage/screenshot1.jpg/d6bf0c928b5a.jpg"
   );
-  const screeArray = [
-    "https://www.instagram.com/static/images/homepage/screenshot1.jpg/d6bf0c928b5a.jpg",
-    "https://www.instagram.com/static/images/homepage/screenshot5.jpg/0a2d3016f375.jpg",
-    "https://www.instagram.com/static/images/homepage/screenshot3.jpg/f0c687aa6ec2.jpg",
-    "https://www.instagram.com/static/images/homepage/screenshot2.jpg/6f03eb85463c.jpg",
-  ];
-  const [passwordIsShowing, setPasswordIsShowing] = useState(false);
+
   var i = 0;
   const screeeHandler = () => {
+    const screeArray = [
+      "https://www.instagram.com/static/images/homepage/screenshot1.jpg/d6bf0c928b5a.jpg",
+      "https://www.instagram.com/static/images/homepage/screenshot5.jpg/0a2d3016f375.jpg",
+      "https://www.instagram.com/static/images/homepage/screenshot3.jpg/f0c687aa6ec2.jpg",
+      "https://www.instagram.com/static/images/homepage/screenshot2.jpg/6f03eb85463c.jpg",
+    ];
     if (i < screeArray.length - 1) {
       i++;
     } else {
@@ -35,10 +44,20 @@ function Login() {
   };
   useEffect(() => {
     setInterval(screeeHandler, 3000);
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("user") === null) {
+        router.push("/login");
+      } else {
+        router.push("/");
+      }
+    }
   }, []);
 
   return (
     <section className={style.container}>
+      <Head>
+        <title>Login • Instagram</title>
+      </Head>
       <section className={style.main_section}>
         <section className={style.phones_section}>
           <img
@@ -74,6 +93,7 @@ function Login() {
                   ref={emailInput}
                   onChange={() => {
                     setLoginEmailButtonStatus(emailInput.current.value);
+                    setLoginError(false);
                   }}
                 />
               </div>
@@ -94,6 +114,7 @@ function Login() {
                   ref={passwordInput}
                   onChange={() => {
                     setLoginPasswordButtonStatus(passwordInput.current.value);
+                    setLoginError(false);
                   }}
                 />
                 <span
@@ -121,8 +142,28 @@ function Login() {
                   ? style.login_in_btn
                   : style.login_in_btn_disabled
               }
-              onClick={() => {
-                console.log("adfasd");
+              onClick={async () => {
+                var user = {
+                  email: emailInput.current.value,
+                  password: passwordInput.current.value,
+                };
+                const fetching = await fetch("/api/userLogIn", {
+                  method: "POST",
+                  body: JSON.stringify(user),
+                  headers: {
+                    "Content-type": "application/json",
+                  },
+                });
+                const response = await fetching.json();
+                if (response.message !== "unsuccessful") {
+                  localStorage.setItem(
+                    "user",
+                    JSON.stringify(response.message[0])
+                  );
+                  router.push("/");
+                } else {
+                  setLoginError(true);
+                }
               }}
               type="submit"
             >
@@ -130,8 +171,8 @@ function Login() {
             </button>
             {loginError ? (
               <div className={style.erorr_txt}>
-                Sorry, your password was incorrect. Please double-check your
-                password.
+                Sorry, your password or email was incorrect. Please double-check
+                your password.
               </div>
             ) : (
               ""
@@ -241,7 +282,9 @@ function Login() {
           <option value="da">Dansk</option>
           <option value="de">Deutsch</option>
           <option value="el">Ελληνικά</option>
-          <option value="en">English</option>
+          <option value="en" selected>
+            English
+          </option>
           <option value="en-gb">English (UK)</option>
           <option value="es">Español (España)</option>
           <option value="es-la">Español</option>

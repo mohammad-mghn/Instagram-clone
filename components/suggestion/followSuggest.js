@@ -1,22 +1,44 @@
-import React from "react";
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @next/next/link-passhref */
+/* eslint-disable react/no-unescaped-entities */
+import React, { useState, useEffect } from "react";
 import Suggestion from "./suggestion";
 import follow from "../../styles/followSuggest.module.css";
 import styles from "../../styles/Home.module.css";
 function FollowSuggest() {
+  const [img_src, setImg_src] = useState(
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADgCAMAAADCMfHtAAAAA1BMVEWFhYWbov8QAAAASElEQVR4nO3BMQEAAADCoPVPbQdvoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+A8XAAAG6+KQCAAAAAElFTkSuQmCC"
+  );
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("user") === null) {
+      } else {
+        setImg_src(JSON.parse(localStorage.getItem("user")).porofile_img);
+      }
+    }
+  }, []);
   const date = new Date();
   return (
     <aside className={styles.follow_suggestion}>
       <section className={follow.switch}>
         <div className={follow.porofile_img_div}>
-          <img
-            src="https://media.cybernews.com/images/featured/2020/10/121013099_369125687551161_5149100685744414425_n.jpg"
-            alt=""
-            className={follow.porofile_img}
-          />
+          <img src={img_src} alt="" className={follow.porofile_img} />
         </div>
         <div className={follow.username_div}>
-          <h5 className={follow.username}>vito.mohagheghian</h5>
-          <h5 className={follow.name}>Vito</h5>
+          <h5 className={follow.username}>
+            {typeof window !== "undefined"
+              ? localStorage.getItem("user") !== null
+                ? JSON.parse(localStorage.getItem("user")).username
+                : "Unknowen"
+              : "Unknowen"}
+          </h5>
+          <h5 className={follow.name}>
+            {typeof window !== "undefined"
+              ? localStorage.getItem("user") !== null
+                ? JSON.parse(localStorage.getItem("user")).fullname
+                : "Unknowen"
+              : "Unknowen"}
+          </h5>
         </div>
         <div className={follow.switch_div}>
           <button

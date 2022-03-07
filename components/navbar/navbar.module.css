@@ -112,7 +112,7 @@
   border-radius: 100%;
   width: 1.5rem;
   height: 1.5rem;
-  outline: black 1.5px solid;
+  outline: black 1px solid;
   outline-offset: 2px;
 }
 .left_side {
@@ -150,9 +150,90 @@
   border-top: 11px solid transparent;
   border-left: 11px solid transparent;
   border-right: 11px solid transparent;
-  border-bottom: 11px solid #fff;
+  border-bottom: 11px solid rgb(255, 0, 0);
 }
-
+.options {
+  position: fixed;
+  right: 9%;
+  z-index: 100;
+  background-color: #ffffff;
+  height: 12.5rem;
+  width: 14rem;
+  margin: 0.75rem 0 0 -50%;
+  transform: translate(-70%);
+  box-shadow: 0 0 10px #cfcfcf;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  animation: top-wipe 0.5s ease-out;
+}
+@keyframes top-wipe {
+  from {
+    opacity: 0;
+    margin-top: -2rem;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0.75rem;
+  }
+}
+.options_container {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+.likes_array_porofile {
+  position: absolute;
+  top: -22px;
+  left: 78%;
+  height: 0;
+  width: 0;
+  border-top: 11px solid transparent;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-bottom: 11px solid #ffffff;
+}
+.porofile_option {
+  width: 100%;
+  height: 2.45rem;
+  padding-left: 6%;
+  display: flex;
+  align-items: center;
+}
+.porofile_option_picture {
+  height: 1rem;
+}
+.porofile_option_heading {
+  all: unset;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  margin: -0.2rem 0 0 0.8rem;
+}
+.vertical_line {
+  width: 100%;
+  height: 1px;
+  background-color: #e2e2e2;
+}
+.logout_button {
+  all: unset;
+  height: 2.6rem;
+  width: 100%;
+  text-align: start;
+  padding-left: 6%;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 0.7rem;
+}
+.porofile_option:hover,
+.logout_button:hover {
+  background-color: #eeeeee;
+}
+.porofile_option:active,
+.logout_button:active {
+  background-color: #cccccc;
+}
 @media screen and (max-width: 1300px) {
   .likes {
     left: 68vw;

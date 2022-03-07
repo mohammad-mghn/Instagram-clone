@@ -1,27 +1,36 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-unescaped-entities */
-import React, { useRef, useState, useEffect } from "react";
-import style from "../../styles/signup.module.css";
+import React, { useRef, useState } from "react";
+
 import Link from "next/link";
+import Head from "next/head";
 import { useRouter } from "next/router";
+
+import style from "../../styles/signup.module.css";
+
 function Emailsignup() {
   const router = useRouter();
-  var date = new Date();
-  const [passwordIsShowing, setPasswordIsShowing] = useState(false);
+
   const emailInput = useRef();
   const fullNameInput = useRef();
   const usernameInput = useRef();
   const passwordInput = useRef();
+
+  var date = new Date();
+
+  const [Porofile, setPorofile] = useState("");
   const [loginError, setLoginError] = useState(false);
+  const [passwordIsShowing, setPasswordIsShowing] = useState(false);
   const [loginEmailButtonStatus, setLoginEmailButtonStatus] = useState("");
   const [loginPasswordButtonStatus, setLoginPasswordButtonStatus] =
     useState("");
-  const [Porofile, setPorofile] = useState("");
+
   const SignUpHandler = async () => {
     const addPorofile = () => {
       var URL = prompt("Enter image URl 👇👇👇");
-      if (URL === "" || URL === " " || URL === undefined) {
+
+      if (URL === "" || URL === " " || URL === undefined || URL === null) {
         alert("Please insert a valid URl");
         addPorofile();
       } else {
@@ -30,6 +39,7 @@ function Emailsignup() {
       }
     };
     addPorofile();
+
     var user = {
       username: usernameInput.current.value,
       fullname: fullNameInput.current.value,
@@ -42,6 +52,7 @@ function Emailsignup() {
       posts: [],
       story: [],
     };
+
     const fetching = await fetch("/api/userSignUp", {
       method: "POST",
       body: JSON.stringify(user),
@@ -49,17 +60,26 @@ function Emailsignup() {
         "Content-type": "application/json",
       },
     });
+
     const response = await fetching.json();
-    // console.log(user);
-    console.log(response, "response");
-    passwordInput.current.value = "";
-    emailInput.current.value = "";
-    fullNameInput.current.value = "";
-    usernameInput.current.value = "";
-    // router.replace("/");
+
+    if (response.message === "successful") {
+      passwordInput.current.value = "";
+      emailInput.current.value = "";
+      fullNameInput.current.value = "";
+      usernameInput.current.value = "";
+      localStorage.setItem("user", JSON.stringify(user));
+      router.replace("/");
+    } else {
+      setLoginError(true);
+    }
   };
+
   return (
     <div className={style.container}>
+      <Head>
+        <title>Login • Instagram</title>
+      </Head>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -187,7 +207,7 @@ function Emailsignup() {
       </form>
       <section className={style.sign_up_section}>
         <div className={style.sign_up_txt}>Have an account?</div>
-        <Link href={"/accounts/emailsignup"}>
+        <Link href={"/login"}>
           <span className={style.Sign_up_link}>Log in</span>
         </Link>
       </section>

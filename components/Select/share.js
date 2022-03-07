@@ -89,7 +89,13 @@ function ShareComponent(props) {
               }
               alt=""
             />
-            <div className={styles.porofile_username}>vito.mohagheghian</div>
+            <div className={styles.porofile_username}>
+              {typeof window !== "undefined"
+                ? localStorage.getItem("user") !== null
+                  ? JSON.parse(localStorage.getItem("user")).username
+                  : "Unknowen"
+                : "Unknowen"}
+            </div>
           </div>
           <div className={styles.caption_input_div}>
             <textarea

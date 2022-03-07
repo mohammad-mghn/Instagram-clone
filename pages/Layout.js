@@ -1,15 +1,24 @@
 import React from "react";
 import Navbar from "../components/navbar/navbar";
-import Head from "next/head";
 function Layout({ children }) {
   return (
     <div>
-      <Head>
-        <title>Instagram</title>
-      </Head>
       <header>
         <Navbar
-          person={{ username: "vito", porofile_img: "../Assists/porofile.jpg" }}
+          person={{
+            username:
+              typeof window !== "undefined"
+                ? localStorage.getItem("user") !== null
+                  ? JSON.parse(localStorage.getItem("user")).username
+                  : "Unknowen"
+                : "Unknowen",
+            porofile_img:
+              typeof window !== "undefined"
+                ? localStorage.getItem("user") !== null
+                  ? JSON.parse(localStorage.getItem("user")).porofile_img
+                  : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADgCAMAAADCMfHtAAAAA1BMVEWFhYWbov8QAAAASElEQVR4nO3BMQEAAADCoPVPbQdvoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+A8XAAAG6+KQCAAAAAElFTkSuQmCC"
+                : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADgCAMAAADCMfHtAAAAA1BMVEWFhYWbov8QAAAASElEQVR4nO3BMQEAAADCoPVPbQdvoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+A8XAAAG6+KQCAAAAAElFTkSuQmCC",
+          }}
         />
       </header>
       <main>{children}</main>

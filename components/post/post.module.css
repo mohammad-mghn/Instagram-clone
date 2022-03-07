@@ -263,6 +263,9 @@
   .post_media {
     height: 100vw;
   }
+  .post_div {
+    height: 110%;
+  }
   .buttons_section {
     height: 10vw;
     display: flex;

@@ -9,6 +9,7 @@ import story from "../components/stories/stories.module.css";
 import Stories from "../components/stories/stories";
 import Posts from "../components/posts/posts";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Login from "../components/login/login";
 // console.log(localStorage.getItem("user"));
 export default function Home(props) {
@@ -36,20 +37,18 @@ export default function Home(props) {
   }
   useEffect(() => {
     addpostHandler();
-  }, []);
-  if (typeof window !== "undefined") {
-    console.log("we are running on the client");
-    // localStorage.setItem("user", JSON.stringify({ username: "Asdfadsf" }));
-    // localStorage.removeItem("user");
-    if (localStorage.getItem("user") === null) {
-      return <Login />;
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("user") === null) {
+        router.push("/login");
+      }
     }
-  } else {
-    console.log("we are running on the server");
-  }
+  }, []);
 
   return (
     <Loading width={loading}>
+      <Head>
+        <title>Instagram</title>
+      </Head>
       <div className={styles.container}>
         <section className={styles.posts_and_stories}>
           <section className={story.container}>
@@ -70,7 +69,7 @@ export default function Home(props) {
 //   const client = await MongoClient.connect(
 //     "mongodb+srv://vito_geeks:santur9292@cluster0.uv8jh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 //   );
-//   const db = client.db();
+//   const db = client.db();`
 //   const postsCollection = db.collection("posts");
 //   const postsGettedCollection = await postsCollection
 //     .find({ username: "vito" })
@@ -133,3 +132,11 @@ export default function Home(props) {
 //     props: {}, // will be passed to the page component as props
 //   };
 // }
+// {typeof window !== "undefined"
+// ? JSON.parse(localStorage.getItem("user")).username
+// : "Unknowen"}
+// {typeof window !== "undefined"
+// ? localStorage.getItem("user") !== null
+//   ? JSON.parse(localStorage.getItem("user")).username
+//   : "Unknowen"
+// : "Unknowen"}

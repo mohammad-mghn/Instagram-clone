@@ -40,7 +40,14 @@ function Inbox() {
         >
           <div className={styles.account_new_chat}>
             <div className={styles.account}>
-              <div className={styles.account_text}>vito.mohagheghian</div>
+              <div className={styles.account_text}>
+                {" "}
+                {typeof window !== "undefined"
+                  ? localStorage.getItem("user") !== null
+                    ? JSON.parse(localStorage.getItem("user")).username
+                    : "Unknowen"
+                  : "Unknowen"}
+              </div>
               {DownButton}
             </div>
             <div className={styles.new_chat_button}>{NewChatButton}</div>

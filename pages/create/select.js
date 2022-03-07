@@ -101,7 +101,12 @@ function Select() {
     console.log(captionValue);
     var nothing = {
       image: img_src,
-      username: "vito",
+      username:
+        typeof window !== "undefined"
+          ? localStorage.getItem("user") !== null
+            ? JSON.parse(localStorage.getItem("user")).username
+            : "Unknowen"
+          : "Unknowen",
       location: locations,
       caption: captionValue === "0" ? "" : captionValue,
       like: 0,
