@@ -3,7 +3,7 @@ import Navbar from "../components/navbar/navbar";
 function Layout({ children }) {
   return (
     <div>
-      <header>
+      <header style={{ position: "relative", zIndex: "3" }}>
         <Navbar
           person={{
             username:

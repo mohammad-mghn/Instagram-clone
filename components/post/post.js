@@ -88,7 +88,22 @@ function Post(props) {
             <circle cx="18" cy="12" r="1.5"></circle>
           </svg>
         </header>
-        <section className={post.post_media}>
+        <section
+          onDoubleClick={async () => {
+            setLiked(true);
+            setLike((like += 1));
+            props.post.like = like;
+            const fetching = await fetch("/api/updateLike", {
+              method: "POST",
+              body: JSON.stringify(props.post),
+              headers: {
+                "Content-type": "application/json",
+              },
+            });
+            const response = await fetching.json();
+          }}
+          className={post.post_media}
+        >
           <Swiper
             cssMode={true}
             navigation={true}

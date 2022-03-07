@@ -29,8 +29,8 @@ function Navbar(props) {
   const [likes, setLikes] = useState(false);
   const [navbar, setNavbar] = useState(router.pathname);
   const [display, setDisplay] = useState(true);
+  const [porofileCircle, setPorofileCircle] = useState(false);
   const [porofile_options, setPorofile_options] = useState(false);
-
   const [img_src, setImg_src] = useState(
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADgCAMAAADCMfHtAAAAA1BMVEWFhYWbov8QAAAASElEQVR4nO3BMQEAAADCoPVPbQdvoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+A8XAAAG6+KQCAAAAAElFTkSuQmCC"
   );
@@ -67,8 +67,9 @@ function Navbar(props) {
         <div className={styles.logo_div}>
           <Image
             src={logo}
-            alt="Picture of the author"
+            alt="Instargam"
             className={styles.logo}
+            width={"100%"}
           />
         </div>
         <div className={styles.left_side}>
@@ -96,6 +97,7 @@ function Navbar(props) {
             <button
               className={styles.menu_icon_button}
               onClick={() => {
+                setPorofileCircle(false);
                 setNavbar("/");
               }}
             >
@@ -107,6 +109,7 @@ function Navbar(props) {
               className={styles.menu_icon_button}
               onClick={() => {
                 setNavbar("/direct/inbox");
+                setPorofileCircle(false);
               }}
             >
               <Link href={"/direct/inbox"}>
@@ -117,6 +120,7 @@ function Navbar(props) {
               className={styles.menu_icon_button}
               onClick={() => {
                 setNavbar("/create/select");
+                setPorofileCircle(false);
               }}
             >
               <Link href={"/create/select"}>
@@ -127,6 +131,7 @@ function Navbar(props) {
               className={styles.menu_icon_button}
               onClick={() => {
                 setNavbar("/explore/");
+                setPorofileCircle(false);
               }}
             >
               <Link href={"/explore/"}>
@@ -137,6 +142,7 @@ function Navbar(props) {
               className={styles.menu_icon_button}
               onClick={() => {
                 setNavbar("/liked/inbox");
+                setPorofileCircle(false);
               }}
             >
               <Link href={"/liked/inbox"}>
@@ -146,7 +152,7 @@ function Navbar(props) {
             <button className={styles.menu_icon_button}>
               <div
                 className={
-                  navbar === `/[user]` || navbar === `/${props.person.username}`
+                  porofileCircle
                     ? styles.porofile_icon_svg_clicked
                     : styles.porofile_icon_svg
                 }
@@ -162,6 +168,13 @@ function Navbar(props) {
                   src={img_src}
                   alt={"porofile"}
                   className={styles.porofile_icon_svg}
+                  onClick={() => {
+                    if (porofileCircle) {
+                      setPorofileCircle(false);
+                    } else {
+                      setPorofileCircle(true);
+                    }
+                  }}
                 />
                 {porofile_options ? (
                   <div className={styles.options}>
@@ -181,6 +194,9 @@ function Navbar(props) {
                           fill="#262626"
                           role="img"
                           viewBox="0 0 24 24"
+                          onClick={() => {
+                            setPorofileCircle(true);
+                          }}
                         >
                           <circle
                             cx="12.004"
