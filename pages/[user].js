@@ -1,9 +1,60 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Porofile from "../components/porofile/porofile";
 function User() {
   const router = useRouter();
-  return <Porofile id={router.query.user} />;
+  const [user, setUser] = useState([
+    {
+      id: "123",
+      username: "qwe",
+      fullname: "3 mohagheghian",
+      email: "vito.mohagheghian@gmail.com",
+      porofile_img:
+        "https://pbs.twimg.com/profile_images/1447440740506906624/Gy5X-BwQ_400x400.jpg",
+      bio: "",
+      followers: [],
+      following: [],
+      posts: [],
+      story: [],
+    },
+    [
+      {
+        id: "s4",
+        username: "vito",
+        fullname: "vito mohagheghian",
+        email: "vito.mohagheghian@gmail.com",
+        porofile_img:
+          "https://pbs.twimg.com/profile_images/1447440740506906624/Gy5X-BwQ_400x400.jpg",
+        bio: "",
+        followers: [],
+        following: [],
+        posts: [],
+        story: [],
+      },
+    ],
+  ]);
+
+  const fetchHandler = async () => {
+    if (router.query.user !== undefined) {
+      var username = {
+        username: "vito",
+      };
+
+      const fetching = await fetch("/api/porofile", {
+        method: "POST",
+        body: JSON.stringify(username),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+      const response = await fetching.json();
+      console.log(router.query.user, response);
+      setUser(response);
+    }
+  };
+  fetchHandler();
+
+  return <Porofile user={user} />;
 }
 
 export default User;
