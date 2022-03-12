@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import style from "./porofile.module.css";
 function Porofile(props) {
+  var date = new Date();
   return (
     <main className={style.container}>
       <section className={style.main_section}>
@@ -70,15 +71,309 @@ function Porofile(props) {
             </div>
             <h3 className={style.fullname_div}>{props.user.fullname}</h3>
             <div className={style.bio_container}>
-              <p className={style.bio}>
-                {props.user.bio}
-                Front-end developer, ReFront-end developer, React.js lover,
-                Santur player, student Front-end developer, React.js lover,
-              </p>
+              <p className={style.bio}>{props.user.bio}</p>
             </div>
           </div>
         </section>
+        <section className={style.menu}>
+          <div className={style.menu_items}>
+            <button type="radio" className={style.menu_item_clicked}>
+              <svg
+                aria-label=""
+                className={style.meun_item_icon}
+                color="#262626"
+                fill="#262626"
+                height="12"
+                role="img"
+                viewBox="0 0 24 24"
+                width="12"
+              >
+                <rect
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  width="18"
+                  x="3"
+                  y="3"
+                ></rect>
+                <line
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  x1="9.015"
+                  x2="9.015"
+                  y1="3"
+                  y2="21"
+                ></line>
+                <line
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  x1="14.985"
+                  x2="14.985"
+                  y1="3"
+                  y2="21"
+                ></line>
+                <line
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  x1="21"
+                  x2="3"
+                  y1="9.015"
+                  y2="9.015"
+                ></line>
+                <line
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  x1="21"
+                  x2="3"
+                  y1="14.985"
+                  y2="14.985"
+                ></line>
+              </svg>
+              <h5 className={style.menu_header}>POSTS</h5>
+            </button>
+
+            <button type="radio" className={style.menu_item}>
+              <svg
+                aria-label=""
+                className={style.meun_item_icon}
+                color="#8e8e8e"
+                fill="#000"
+                height="12"
+                role="img"
+                viewBox="0 0 24 24"
+                width="12"
+              >
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 22.5C6.2 22.5 1.5 17.8 1.5 12S6.2 1.5 12 1.5 22.5 6.2 22.5 12 17.8 22.5 12 22.5zm5-11.8l-6.8-3.9c-.5-.3-1-.3-1.5 0-.4.3-.7.7-.7 1.3v7.8c0 .5.3 1 .8 1.3.2.1.5.2.8.2s.5-.1.8-.2l6.8-3.9c.5-.3.8-.8.8-1.3s-.5-1-1-1.3zm-7.5 5.2V8.1l6.8 3.9-6.8 3.9z"></path>
+              </svg>
+              <h5 className={style.menu_header}>VIDOES</h5>
+            </button>
+            <button type="radio" className={style.menu_item}>
+              <svg
+                aria-label=""
+                className={style.meun_item_icon}
+                color="#000"
+                fill="#000"
+                height="12"
+                role="img"
+                viewBox="0 0 24 24"
+                width="12"
+              >
+                <polygon
+                  fill="none"
+                  points="20 21 12 13.44 4 21 4 3 20 3 20 21"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                ></polygon>
+              </svg>
+              <h5 className={style.menu_header}>SAVED</h5>
+            </button>
+            <button type="radio" className={style.menu_item}>
+              <svg
+                aria-label=""
+                className={style.meun_item_icon}
+                color="#262626"
+                fill="#262626"
+                height="12"
+                role="img"
+                viewBox="0 0 24 24"
+                width="12"
+              >
+                <rect
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  width="18"
+                  x="3"
+                  y="3"
+                ></rect>
+                <line
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  x1="9.015"
+                  x2="9.015"
+                  y1="3"
+                  y2="21"
+                ></line>
+                <line
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  x1="14.985"
+                  x2="14.985"
+                  y1="3"
+                  y2="21"
+                ></line>
+                <line
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  x1="21"
+                  x2="3"
+                  y1="9.015"
+                  y2="9.015"
+                ></line>
+                <line
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  x1="21"
+                  x2="3"
+                  y1="14.985"
+                  y2="14.985"
+                ></line>
+              </svg>
+              <h5 className={style.menu_header}>TAGGED</h5>
+            </button>
+          </div>
+        </section>
+        <section className={style.posts}>
+          {props.user.posts !== []
+            ? props.user.posts.map((post) => {
+                console.log(post.image);
+                return (
+                  <div className={style.post} key={post.id}>
+                    <img
+                      className={style.post_image}
+                      src={post.image[0]}
+                      alt=""
+                    />
+                  </div>
+                );
+              })
+            : ""}
+        </section>
       </section>
+      <footer className={style.footer}>
+        <section className={style.links}>
+          <a href="https://about.facebook.com/meta" className={style.link}>
+            Meta
+          </a>
+          <a href="https://about.facebook.com/meta" className={style.link}>
+            About
+          </a>
+          <a href="https://about.facebook.com/meta" className={style.link}>
+            Blog
+          </a>
+          <a href="https://about.facebook.com/meta" className={style.link}>
+            Jobs
+          </a>
+          <a href="https://about.facebook.com/meta" className={style.link}>
+            Help
+          </a>
+          <a href="https://about.facebook.com/meta" className={style.link}>
+            API
+          </a>
+          <a href="https://about.facebook.com/meta" className={style.link}>
+            Privacy
+          </a>
+          <a href="https://about.facebook.com/meta" className={style.link}>
+            Terms
+          </a>
+          <a href="https://about.facebook.com/meta" className={style.link}>
+            Top
+          </a>
+          <a href="https://about.facebook.com/meta" className={style.link}>
+            Accounts
+          </a>
+          <a href="https://about.facebook.com/meta" className={style.link}>
+            Hashtags
+          </a>
+          <a href="https://about.facebook.com/meta" className={style.link}>
+            Locations
+          </a>
+        </section>
+        <section className={style.copy_right_and_language}>
+          <select
+            aria-label="Switch Display Language"
+            className={style.language_select}
+          >
+            <option value="af">Afrikaans</option>
+            <option value="cs">Čeština</option>
+            <option value="da">Dansk</option>
+            <option value="de">Deutsch</option>
+            <option value="el">Ελληνικά</option>
+            <option value="en" selected>
+              English
+            </option>
+            <option value="en-gb">English (UK)</option>
+            <option value="es">Español (España)</option>
+            <option value="es-la">Español</option>
+            <option value="fi">Suomi</option>
+            <option value="fr">Français</option>
+            <option value="id">Bahasa Indonesia</option>
+            <option value="it">Italiano</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="ms">Bahasa Melayu</option>
+            <option value="nb">Norsk</option>
+            <option value="nl">Nederlands</option>
+            <option value="pl">Polski</option>
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="pt">Português (Portugal)</option>
+            <option value="ru">Русский</option>
+            <option value="sv">Svenska</option>
+            <option value="th">ภาษาไทย</option>
+            <option value="tl">Filipino</option>
+            <option value="tr">Türkçe</option>
+            <option value="zh-cn">中文(简体)</option>
+            <option value="zh-tw">中文(台灣)</option>
+            <option value="bn">বাংলা</option>
+            <option value="gu">ગુજરાતી</option>
+            <option value="hi">हिन्दी</option>
+            <option value="hr">Hrvatski</option>
+            <option value="hu">Magyar</option>
+            <option value="kn">ಕನ್ನಡ</option>
+            <option value="ml">മലയാളം</option>
+            <option value="mr">मराठी</option>
+            <option value="ne">नेपाली</option>
+            <option value="pa">ਪੰਜਾਬੀ</option>
+            <option value="si">සිංහල</option>
+            <option value="sk">Slovenčina</option>
+            <option value="ta">தமிழ்</option>
+            <option value="te">తెలుగు</option>
+            <option value="vi">Tiếng Việt</option>
+            <option value="zh-hk">中文(香港)</option>
+            <option value="bg">Български</option>
+            <option value="fr-ca">Français (Canada)</option>
+            <option value="ro">Română</option>
+            <option value="sr">Српски</option>
+            <option value="uk">Українська</option>
+          </select>
+
+          <div className={style.copy_right_part}>
+            © {date.getFullYear()} Instagram from Meta
+          </div>
+        </section>
+      </footer>
     </main>
   );
 }

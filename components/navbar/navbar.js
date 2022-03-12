@@ -32,7 +32,7 @@ function Navbar(props) {
   const [porofileCircle, setPorofileCircle] = useState(false);
   const [porofile_options, setPorofile_options] = useState(false);
   const [img_src, setImg_src] = useState(
-    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADgCAMAAADCMfHtAAAAA1BMVEWFhYWbov8QAAAASElEQVR4nO3BMQEAAADCoPVPbQdvoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+A8XAAAG6+KQCAAAAAElFTkSuQmCC"
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKo2KWflj1H9qcvCuHr2j33C9HnXzzkf7BBA&usqp=CAU"
   );
   useEffect(() => {
     if (typeof window !== "undefined") {

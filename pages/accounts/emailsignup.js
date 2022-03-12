@@ -19,7 +19,8 @@ function Emailsignup() {
 
   var date = new Date();
 
-  const [Porofile, setPorofile] = useState("");
+  const [Porofile, setPorofile] = useState("data");
+  const [bio, setBio] = useState("");
   const [loginError, setLoginError] = useState(false);
   const [passwordIsShowing, setPasswordIsShowing] = useState(false);
   const [loginEmailButtonStatus, setLoginEmailButtonStatus] = useState("");
@@ -27,52 +28,49 @@ function Emailsignup() {
     useState("");
 
   const SignUpHandler = async () => {
-    const addPorofile = () => {
+    var addPorofile = async () => {
       var URL = prompt("Enter image URl 👇👇👇");
-
+      var BIO = prompt("Enter your bio 👇👇👇");
       if (URL === "" || URL === " " || URL === undefined || URL === null) {
         alert("Please insert a valid URl");
-        addPorofile();
       } else {
-        setPorofile(URL);
-        alert("Tnx 😉");
+        var user = {
+          username: usernameInput.current.value,
+          fullname: fullNameInput.current.value,
+          email: emailInput.current.value,
+          password: passwordInput.current.value,
+          porofile_img: URL,
+          bio: BIO,
+          followers: [],
+          following: [],
+          posts: [],
+          story: [],
+        };
+
+        console.log(user, JSON.stringify(user));
+        const fetching = await fetch("/api/userSignUp", {
+          method: "POST",
+          body: JSON.stringify(user),
+          headers: {
+            "Content-type": "application/json",
+          },
+        });
+
+        const response = await fetching.json();
+
+        if (response.message === "successful") {
+          passwordInput.current.value = "";
+          emailInput.current.value = "";
+          fullNameInput.current.value = "";
+          usernameInput.current.value = "";
+          localStorage.setItem("user", JSON.stringify(user));
+          router.replace("/");
+        } else {
+          setLoginError(true);
+        }
       }
     };
     addPorofile();
-
-    var user = {
-      username: usernameInput.current.value,
-      fullname: fullNameInput.current.value,
-      email: emailInput.current.value,
-      password: passwordInput.current.value,
-      porofile_img: Porofile,
-      bio: "",
-      followers: [],
-      following: [],
-      posts: [],
-      story: [],
-    };
-
-    const fetching = await fetch("/api/userSignUp", {
-      method: "POST",
-      body: JSON.stringify(user),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
-
-    const response = await fetching.json();
-
-    if (response.message === "successful") {
-      passwordInput.current.value = "";
-      emailInput.current.value = "";
-      fullNameInput.current.value = "";
-      usernameInput.current.value = "";
-      localStorage.setItem("user", JSON.stringify(user));
-      router.replace("/");
-    } else {
-      setLoginError(true);
-    }
   };
 
   return (

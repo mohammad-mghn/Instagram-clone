@@ -6,7 +6,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import styles from "../../styles/create.module.css";
 
@@ -98,7 +98,39 @@ function Select() {
     setCaptionValue(caption.current.value);
   };
   const ShareButton = async () => {
-    console.log(captionValue);
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("user") !== null) {
+        var userLocal = JSON.parse(localStorage.getItem("user"));
+
+        userLocal.posts.push({
+          image: img_src,
+          username:
+            typeof window !== "undefined"
+              ? localStorage.getItem("user") !== null
+                ? JSON.parse(localStorage.getItem("user")).username
+                : "Unknowen"
+              : "Unknowen",
+          location: locations,
+          caption: captionValue === "0" ? "" : captionValue,
+          like: 0,
+          comments: comments,
+          date: date.getTime(),
+          user_porofile:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOqZYYCzNs4EY1zOHICsxGYyIyzpHmRQJjRw&usqp=CAU",
+        });
+        console.log(userLocal);
+        localStorage.setItem("user", JSON.stringify(userLocal));
+        const fetchingUser = await fetch("/api/updateUser", {
+          method: "POST",
+          body: JSON.stringify(userLocal),
+          headers: {
+            "Content-type": "application/json",
+          },
+        });
+        const responseUser = await fetchingUser.json();
+        console.log("response:", responseUser);
+      }
+    }
     var nothing = {
       image: img_src,
       username:
@@ -115,6 +147,7 @@ function Select() {
       user_porofile:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOqZYYCzNs4EY1zOHICsxGYyIyzpHmRQJjRw&usqp=CAU",
     };
+
     const fetching = await fetch("/api/newpost", {
       method: "POST",
       body: JSON.stringify(nothing),
@@ -124,6 +157,7 @@ function Select() {
     });
     const response = await fetching.json();
     console.log(nothing);
+
     location.current.value = "";
     caption.current.value = "";
     router.replace("/");

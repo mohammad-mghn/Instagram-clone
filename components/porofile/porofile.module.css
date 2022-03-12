@@ -1,17 +1,15 @@
 .container {
   width: 100%;
-  height: 100%;
+  height: 150%;
   position: absolute;
   top: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-
   background-color: #fafafa;
 }
 .main_section {
   width: 60rem;
-  /* background-color: aqua; */
 }
 .user_data {
   height: 15rem;
@@ -45,6 +43,7 @@
   font-weight: 300;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   width: 15rem;
+  margin-right: 1rem;
   overflow: hidden;
 }
 .settings_section {
@@ -105,4 +104,110 @@
   overflow: hidden;
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   text-overflow: ellipsis;
+}
+.menu {
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 1rem;
+  border-top: 1px solid #cecece;
+}
+.menu_items {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  /* background-color: aquamarine; */
+  height: calc(3.5rem + 1px);
+  width: 48%;
+}
+.menu_item {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  height: 3.5rem;
+  border-top: 2px solid transparent;
+  cursor: pointer;
+}
+.menu_item_clicked {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  height: 3.5rem;
+  border-top: 1px solid #3d3d3d;
+  cursor: pointer;
+}
+.meun_item_icon {
+  margin-right: 0.4rem;
+  width: 1rem;
+}
+.menu_header {
+  color: #6b6b6b;
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+.posts {
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+  column-gap: 1rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.post {
+  width: 19.25rem;
+  height: 19.25rem;
+}
+.post_image {
+  width: 100%;
+  height: 100%;
+}
+.footer {
+  width: fit-content;
+  height: fit-content;
+}
+.links {
+  margin-top: 1.7rem;
+  width: 42rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 1rem;
+}
+.link {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #8e8e8e;
+  font-size: 0.75rem;
+  margin-right: 0.75rem;
+}
+.copy_right_and_language {
+  width: fit-content;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  margin-left: 50%;
+  transform: translate(-50%);
+}
+.language_select {
+  background-color: transparent;
+  border: none;
+  width: 5rem;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #8e8e8e;
+  font-size: 0.7rem;
+  outline: none;
+  cursor: pointer;
+}
+.copy_right_part {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #8e8e8e;
+  font-size: 0.75rem;
+  margin-left: 1.5rem;
 }

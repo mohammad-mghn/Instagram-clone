@@ -161,6 +161,8 @@ function Login() {
                     JSON.stringify(response.message[0])
                   );
                   router.push("/");
+
+                  console.log(response.message);
                 } else {
                   setLoginError(true);
                 }
