@@ -60,11 +60,35 @@
 .username {
   font-size: 0.75rem;
   line-height: 1rem;
-  width: 3.75rem;
+  width: 6.5rem;
   text-align: center;
-  overflow: hidden;
+  /* overflow: hidden; */
   font-weight: 400;
   cursor: pointer;
+}
+.username_verified {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  width: 6.5rem;
+  text-align: center;
+  /* overflow: hidden; */
+  font-weight: 400;
+  cursor: pointer;
+}
+.username_verified::after {
+  content: "✓";
+  position: relative;
+  left: 0.25rem;
+  /* top: 0.125rem; */
+  background-color: #0095f6;
+  height: 0.7rem;
+  width: 0.7rem;
+  font-size: 0.5rem;
+  line-height: 1.4;
+  border-radius: 10rem;
+  display: inline-block;
+  color: #ffffff;
+  text-align: center;
 }
 @media screen and (max-width: 650px) {
   .container {

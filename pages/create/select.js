@@ -145,7 +145,9 @@ function Select() {
       comments: comments,
       date: date.getTime(),
       user_porofile:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOqZYYCzNs4EY1zOHICsxGYyIyzpHmRQJjRw&usqp=CAU",
+        typeof window !== "undefined"
+          ? JSON.parse(localStorage.getItem("user")).porofile_img
+          : "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Grey_background.jpg/1200px-Grey_background.jpg",
     };
 
     const fetching = await fetch("/api/newpost", {

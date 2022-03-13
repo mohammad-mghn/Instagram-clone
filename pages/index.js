@@ -32,8 +32,8 @@ export default function Home(props) {
     const response = await fetch("/api/currentposts");
     const data = await response.json();
     setLoading(100);
-    setposts(data);
-    console.log(data);
+    setposts(data.reverse());
+    // console.log("data", data);
   }
   useEffect(() => {
     addpostHandler();
@@ -43,7 +43,7 @@ export default function Home(props) {
       }
     }
   }, []);
-
+  console.log("reverse ", posts.reverse());
   return (
     <Loading width={loading}>
       <Head>

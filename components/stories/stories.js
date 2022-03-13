@@ -73,7 +73,9 @@ function Stories() {
                 onClick={() => {
                   router.push(`/${Story.username}`);
                 }}
-                className={story.username}
+                className={
+                  Story.verified ? story.username_verified : story.username
+                }
               >
                 {Story.username}
               </div>
