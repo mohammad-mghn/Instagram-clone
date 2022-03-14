@@ -1,0 +1,46 @@
+.main_container {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #eeeeee;
+}
+.container {
+  position: absolute;
+  top: 4.75rem;
+  width: 58.5rem;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.5rem;
+  row-gap: 0.125rem;
+  margin-bottom: 1rem;
+}
+.post_image {
+  width: 19rem;
+  height: 19rem;
+  margin: 0;
+}
+@media screen and (max-width: 940px) {
+  .main_container {
+    position: absolute;
+    top: 16vw;
+    width: 100vw;
+    height: 100%;
+    display: block;
+  }
+  .container {
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1vw;
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+    width: 100vw;
+    top: 0;
+  }
+  .post_image {
+    width: 31.65vw;
+    height: 31.65vw;
+  }
+}

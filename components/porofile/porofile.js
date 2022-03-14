@@ -1,10 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect } from "react";
 import style from "./porofile.module.css";
+import Head from "next/head";
 function Porofile(props) {
   var date = new Date();
   return (
     <main className={style.container}>
+      <Head>
+        <title>
+          {props.user.fullname.split(" ")[0]} (@{props.user.username}) •
+          Instagram
+        </title>
+      </Head>
       <section className={style.main_section}>
         <section className={style.user_data}>
           <div className={style.porofile_section}>
@@ -80,7 +87,7 @@ function Porofile(props) {
             <button type="radio" className={style.menu_item_clicked}>
               <svg
                 aria-label=""
-                className={style.meun_item_icon}
+                className={style.meun_item_icon_clicked}
                 color="#262626"
                 fill="#262626"
                 height="12"

@@ -1,6 +1,7 @@
 .container {
-  width: 100%;
-  height: 150%;
+  width: 100vw;
+  min-height: 150%;
+  height: fit-content;
   position: absolute;
   top: 5rem;
   display: flex;
@@ -145,6 +146,10 @@
   margin-right: 0.4rem;
   width: 1rem;
 }
+.meun_item_icon_clicked {
+  margin-right: 0.4rem;
+  width: 1rem;
+}
 .menu_header {
   color: #6b6b6b;
   font-size: 0.8rem;
@@ -210,4 +215,121 @@
   color: #8e8e8e;
   font-size: 0.75rem;
   margin-left: 1.5rem;
+}
+@media screen and (max-width: 700px) {
+  .container {
+    width: 100vw;
+    top: 20vw;
+    height: fit-content;
+  }
+  .main_section {
+    width: 100%;
+  }
+  .user_data {
+    height: 18rem;
+    display: flex;
+  }
+  .porofile_section {
+    height: 20vw;
+    width: 30vw;
+  }
+  .porofile {
+    width: 18vw;
+    height: 18vw;
+    border-radius: 10rem;
+    outline: 2px solid #dadada;
+    outline-offset: 5px;
+    margin: 2px 0 0 -0.25rem;
+  }
+  .user_settings_and_username {
+    flex-direction: column;
+    width: 70vw;
+    height: fit-content;
+    align-items: flex-start;
+  }
+  .username {
+    width: 65vw;
+    font-size: 1.5rem;
+    margin-right: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 0.25rem;
+  }
+  .settings_svg {
+    position: absolute;
+    right: 1.75%;
+    top: -0.0001rem;
+  }
+  .edit_porofile {
+    width: 70vw;
+  }
+  .fullname_div {
+    position: absolute;
+    top: 6rem;
+    left: -26vw;
+    transform: translate(30vw);
+    font-size: 0.9rem;
+  }
+  .bio_container {
+    position: absolute;
+    top: 7.75rem;
+    left: -26vw;
+    transform: translate(30vw);
+    font-size: 0.9rem;
+    margin-top: -0.5;
+    width: 90vw;
+    max-height: 7rem;
+  }
+  .posts_following_followers_count {
+    position: absolute;
+    left: 0;
+    top: 15rem;
+    bottom: 0;
+    width: 100vw;
+    column-gap: 0;
+    justify-content: space-around;
+  }
+  .user_data_section {
+    width: 80vw;
+  }
+  .menu_items {
+    height: calc(3.3rem + 1px);
+    width: 100%;
+  }
+  .menu_header {
+    display: none;
+  }
+  .menu_item_clicked {
+    height: 3.3rem;
+    border-top: 0;
+    cursor: pointer;
+  }
+  .meun_item_icon {
+    margin-right: 0;
+    width: 4rem;
+    height: 1.5rem;
+  }
+  .meun_item_icon_clicked {
+    margin-right: 0;
+    width: 4rem;
+    height: 1.5rem;
+    color: #0095f6;
+  }
+  .posts {
+    row-gap: 0.25rem;
+    column-gap: 0.25rem;
+  }
+  .post {
+    width: 32.65vw;
+    height: 32.65vw;
+  }
+  .footer {
+    width: 100vw;
+  }
+  .links {
+    width: 100%;
+  }
+  .copy_right_and_language {
+    width: 62.5%;
+  }
 }

@@ -55,7 +55,7 @@ function Emailsignup() {
     });
 
     const response = await fetching.json();
-
+    console.log(response);
     if (response.message === "successful") {
       passwordInput.current.value = "";
       emailInput.current.value = "";
