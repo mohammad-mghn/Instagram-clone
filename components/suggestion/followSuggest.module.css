@@ -97,19 +97,19 @@
   align-items: center;
   justify-content: space-between;
 }
-.suggestion_img_div {
+.suggestion_porofile_container {
   height: 2.25rem;
   width: 2.25rem;
   border-radius: 10rem;
   overflow: hidden;
 }
-.suggestion_img {
+.porofile {
   height: 100%;
   margin-left: 50%;
   transform: translate(-50%);
   cursor: pointer;
 }
-.suggestion_details {
+.suggestion_description {
   height: 3rem;
   width: 70%;
   display: flex;
@@ -132,7 +132,7 @@
 .suggestion_username:hover {
   text-decoration: underline;
 }
-.suggestion_followed {
+.followed_following_details {
   all: unset;
   font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
   color: #3b3b3b;

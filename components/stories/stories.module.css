@@ -1,19 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,500;1,400;1,500&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Nunito:ital,wght@0,200;0,400;0,600;0,700;1,200;1,300&family=Roboto:wght@100;300;500;900&family=Source+Sans+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Viga&display=swap");
-.container {
-  height: 7rem;
-  width: 100%;
-  margin-bottom: 1.8rem;
-  border: 1px solid rgba(219, 219, 219, 1);
-  background-color: #ffffff;
-  overflow: hidden;
-}
-.mySwiperStory {
+.Slider {
   height: 7rem;
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.5rem;
 }
-.story_div {
+.story_container {
   height: 7rem;
   width: 5rem;
   display: flex;
@@ -22,7 +13,7 @@
   flex-direction: column;
   row-gap: 0.125rem;
 }
-.img_main {
+.porofile_container {
   background: linear-gradient(45deg, #f37b12, #c62d90);
   width: 4rem;
   height: 4rem;
@@ -32,7 +23,7 @@
   border-radius: 15rem;
   cursor: pointer;
 }
-.img_main_seen {
+.porofile_container_seen {
   background-color: #e2e2e2;
   width: 4rem;
   height: 4rem;
@@ -42,7 +33,7 @@
   border-radius: 15rem;
   cursor: pointer;
 }
-.story_img {
+.porofile_div {
   width: 3.75rem;
   height: 3.75rem;
   display: flex;
@@ -62,7 +53,6 @@
   line-height: 1rem;
   width: 6.5rem;
   text-align: center;
-  /* overflow: hidden; */
   font-weight: 400;
   cursor: pointer;
 }
@@ -71,7 +61,6 @@
   line-height: 1rem;
   width: 6.5rem;
   text-align: center;
-  /* overflow: hidden; */
   font-weight: 400;
   cursor: pointer;
 }
@@ -79,7 +68,6 @@
   content: "✓";
   position: relative;
   left: 0.25rem;
-  /* top: 0.125rem; */
   background-color: #0095f6;
   height: 0.7rem;
   width: 0.7rem;
@@ -91,12 +79,7 @@
   text-align: center;
 }
 @media screen and (max-width: 650px) {
-  .container {
-    width: 100vw;
-    border: none;
-    border-bottom: 1px solid rgba(219, 219, 219, 1);
-  }
-  .mySwiperStory {
+  .Slider {
     height: 7rem;
     width: 100vw;
     padding-left: 0.75rem;

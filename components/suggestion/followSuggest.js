@@ -2,37 +2,65 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState, useEffect } from "react";
+
+import styles from "./followSuggest.module.css";
+import HomeStyles from "../../styles/Home.module.css";
+
 import Suggestion from "./suggestion";
-import follow from "../../styles/followSuggest.module.css";
-import styles from "../../styles/Home.module.css";
+
+// SuggestionsDB is containing suggested accounts
+import SuggestionsDB from "./followSuggestDB";
+
 function FollowSuggest() {
-  const [img_src, setImg_src] = useState(
+  const links = [
+    { href: "https://about.instagram.com/", title: "About" },
+    { href: "https://about.instagram.com/", title: "Help" },
+    { href: "https://about.instagram.com/", title: "Press" },
+    { href: "https://about.instagram.com/", title: "API" },
+    { href: "https://about.instagram.com/", title: "Jobs" },
+    { href: "https://about.instagram.com/", title: "Privacy" },
+    { href: "https://about.instagram.com/", title: "Terms" },
+    { href: "https://about.instagram.com/", title: "Locations" },
+    { href: "https://about.instagram.com/", title: "Top Accounts" },
+    { href: "https://about.instagram.com/", title: "Hashtags" },
+    { href: "https://about.instagram.com/", title: "Language" },
+  ];
+
+  const date = new Date();
+
+  // porofileSrc is fot logined in user which default value is grey image
+  // however after mounting component it will reset to user porofile
+  const [porofileSrc, setPorofileSrc] = useState(
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADgCAMAAADCMfHtAAAAA1BMVEWFhYWbov8QAAAASElEQVR4nO3BMQEAAADCoPVPbQdvoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+A8XAAAG6+KQCAAAAAElFTkSuQmCC"
   );
+
   useEffect(() => {
+    // <useEffectDescription> this part of code is for checking that does it renders at
+    // client or server, because server doesn't have localStorge, so we have to check that
+    // it's rendering at clinetSide or serverSide </useEffectDescription>
     if (typeof window !== "undefined") {
       if (localStorage.getItem("user") === null) {
       } else {
-        setImg_src(JSON.parse(localStorage.getItem("user")).porofile_img);
+        setPorofileSrc(JSON.parse(localStorage.getItem("user")).porofile_img);
       }
     }
   }, []);
-  const date = new Date();
+
   return (
-    <aside className={styles.follow_suggestion}>
-      <section className={follow.switch}>
-        <div className={follow.porofile_img_div}>
-          <img src={img_src} alt="" className={follow.porofile_img} />
+    <aside className={HomeStyles.follow_suggestion}>
+      <section className={styles.switch}>
+        <div className={styles.porofile_img_div}>
+          <img src={porofileSrc} alt="" className={styles.porofile_img} />
         </div>
-        <div className={follow.username_div}>
-          <h5 className={follow.username}>
+        <div className={styles.username_div}>
+          <h5 className={styles.username}>
             {typeof window !== "undefined"
               ? localStorage.getItem("user") !== null
                 ? JSON.parse(localStorage.getItem("user")).username
                 : "Unknowen"
               : "Unknowen"}
           </h5>
-          <h5 className={follow.name}>
+          <h5 className={styles.name}>
             {typeof window !== "undefined"
               ? localStorage.getItem("user") !== null
                 ? JSON.parse(localStorage.getItem("user")).fullname
@@ -40,104 +68,39 @@ function FollowSuggest() {
               : "Unknowen"}
           </h5>
         </div>
-        <div className={follow.switch_div}>
+        <div className={styles.switch_div}>
           <button
             onClick={() => {
               alert("This feature is disabled.");
             }}
-            className={follow.switch_button}
+            className={styles.switch_button}
           >
             Switch
           </button>
         </div>
       </section>
-      <section className={follow.follow_suggestions}>
-        <header className={follow.header}>
-          <h4 className={follow.header_title}>Suggestions For You</h4>
-          <h4 className={follow.see_all}>See All</h4>
+      <section className={styles.follow_suggestions}>
+        <header className={styles.header}>
+          <h4 className={styles.header_title}>Suggestions For You</h4>
+          <h4 className={styles.see_all}>See All</h4>
         </header>
-        <Suggestion
-          porofile="https://i.pinimg.com/originals/95/c2/19/95c219cdc1fa1508548d3aa764fa3715.jpg"
-          username="Vito.company"
-          detail="Followed by vito.mohagheghian + 3 more"
-        />
-        <Suggestion
-          porofile="https://i.pinimg.com/originals/95/c2/19/95c219cdc1fa1508548d3aa764fa3715.jpg"
-          username="user"
-        />
-        <Suggestion
-          porofile="https://i.pinimg.com/originals/95/c2/19/95c219cdc1fa1508548d3aa764fa3715.jpg"
-          username="Vito.company"
-          detail="Followed by vito.mohagheghian + 3 more"
-        />
-        <Suggestion
-          porofile="https://i.pinimg.com/originals/95/c2/19/95c219cdc1fa1508548d3aa764fa3715.jpg"
-          username="user"
-          detail="Followed by vito.mohagheghian + 3 more"
-        />
-        <Suggestion
-          porofile="https://i.pinimg.com/originals/95/c2/19/95c219cdc1fa1508548d3aa764fa3715.jpg"
-          username="Vito.company"
-          detail="Followed by vito.mohagheghian + 3 more"
-        />
+        {SuggestionsDB.map((suggestion, index) => (
+          <Suggestion
+            key={index}
+            porofile={suggestion.porofile}
+            username={suggestion.username}
+            detail={suggestion.detail}
+          />
+        ))}
       </section>
-      <section className={follow.links_div}>
-        <a href="https://about.instagram.com/" className={follow.link}>
-          About
-        </a>
-        <a href="https://help.instagram.com/" className={follow.link}>
-          Help
-        </a>
-        <a href="https://about.instagram.com/blog/" className={follow.link}>
-          Press
-        </a>
-        <a
-          href="https://developers.facebook.com/docs/instagram"
-          className={follow.link}
-        >
-          API
-        </a>
-        <a
-          href="https://about.instagram.com/about-us/careers"
-          className={follow.link}
-        >
-          Jobs
-        </a>
-        <a
-          href="https://help.instagram.com/519522125107875/?maybe_redirect_pol=0"
-          className={follow.link}
-        >
-          Privacy
-        </a>
-        <a
-          href="https://help.instagram.com/581066165581870"
-          className={follow.link}
-        >
-          Terms
-        </a>
-        <a
-          href="https://www.instagram.com/explore/locations/"
-          className={follow.link}
-        >
-          Locaitions
-        </a>
-        <a
-          href="https://www.instagram.com/directory/profiles/"
-          className={follow.link}
-        >
-          Top Accounts
-        </a>
-        <a
-          href="https://www.instagram.com/directory/hashtags/"
-          className={follow.link}
-        >
-          Hashtags
-        </a>
-        <a href="" className={follow.no_dot}>
-          Language
-        </a>
+      <section className={styles.links_div}>
+        {links.map((link) => (
+          <a key={link.title} href={link.href} className={styles.link}>
+            {link.title}
+          </a>
+        ))}
       </section>
-      <section className={follow.copyright}>
+      <section className={styles.copyright}>
         © {date.getUTCFullYear()} INSTAGRAM FROM META
       </section>
     </aside>

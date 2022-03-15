@@ -1,16 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import styles from "./stories.module.css";
-import story from "./stories.module.css";
+
+import style from "./stories.module.css";
+
+import Story from "../../elements/story";
+
+import { StoriesData } from "./storiesdb";
+
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation } from "swiper";
-import { StoriesData } from "./storiesdb";
-import { useRouter } from "next/router";
-function Stories() {
-  const router = useRouter();
+
+const Stories = () => {
   return (
     <Swiper
       slidesPerView={8}
@@ -19,7 +22,7 @@ function Stories() {
       cssMode={true}
       allowTouchMove={true}
       modules={[Navigation]}
-      className={story.mySwiperStory}
+      className={style.Slider}
       breakpoints={{
         "@0.00": {
           slidesPerView: 4,
@@ -51,40 +54,15 @@ function Stories() {
         },
       }}
     >
-      {StoriesData.map((Story, index) => {
+      {StoriesData.map((story, index) => {
         return (
           <SwiperSlide key={index}>
-            <div className={story.story_div}>
-              <div
-                className={Story.seen ? story.img_main_seen : story.img_main}
-                onClick={() => {
-                  alert("This option is disabled.");
-                }}
-              >
-                <div className={story.story_img}>
-                  <img
-                    src={Story.porofile}
-                    alt={Story.username}
-                    className={story.porofile}
-                  />
-                </div>
-              </div>
-              <div
-                onClick={() => {
-                  router.push(`/${Story.username}`);
-                }}
-                className={
-                  Story.verified ? story.username_verified : story.username
-                }
-              >
-                {Story.username}
-              </div>
-            </div>
+            <Story story={story} />
           </SwiperSlide>
         );
       })}
     </Swiper>
   );
-}
+};
 
 export default Stories;

@@ -1,19 +1,15 @@
 .container {
-  /* background-color: blue; */
   width: 60rem;
-  height: fit-content;
+  height: 100%;
   position: absolute;
   top: 6rem;
   left: 50%;
   transform: translate(-50%);
-  z-index: -100;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  min-height: 200vh;
 }
 .posts_and_stories {
-  /* background-color: aqua; */
   width: 39rem;
   height: 30rem;
 }
@@ -24,7 +20,14 @@
   position: fixed;
   top: 6rem;
   right: calc(50% - 30.5rem);
-  /* background-color: aquamarine; */
+}
+.stories_container {
+  height: 7rem;
+  width: 100%;
+  margin-bottom: 1.8rem;
+  border: 1px solid rgba(219, 219, 219, 1);
+  background-color: #ffffff;
+  overflow: hidden;
 }
 .posts {
   height: 190vh;
@@ -47,6 +50,11 @@
   .container {
     width: 100vw;
     top: 3.5rem;
+  }
+  .stories_container {
+    width: 100vw;
+    border: none;
+    border-bottom: 1px solid rgba(219, 219, 219, 1);
   }
   .posts {
     width: 100vw;
