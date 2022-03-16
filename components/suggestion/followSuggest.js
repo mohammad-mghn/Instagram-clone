@@ -11,6 +11,8 @@ import Suggestion from "./suggestion";
 // SuggestionsDB is containing suggested accounts
 import SuggestionsDB from "./followSuggestDB";
 
+import LoginHandler from "../../modules/LoginHandler/loginHandler";
+
 function FollowSuggest() {
   const links = [
     { href: "https://about.instagram.com/", title: "About" },
@@ -47,63 +49,63 @@ function FollowSuggest() {
   }, []);
 
   return (
-    <aside className={HomeStyles.follow_suggestion}>
-      <section className={styles.switch}>
-        <div className={styles.porofile_img_div}>
-          <img src={porofileSrc} alt="" className={styles.porofile_img} />
-        </div>
-        <div className={styles.username_div}>
-          <h5 className={styles.username}>
-            {typeof window !== "undefined"
-              ? localStorage.getItem("user") !== null
+    <LoginHandler>
+      <aside className={HomeStyles.follow_suggestion}>
+        <section className={styles.switch}>
+          <div className={styles.porofile_img_div}>
+            <img src={porofileSrc} alt="" className={styles.porofile_img} />
+          </div>
+          <div className={styles.username_div}>
+            <h5 className={styles.username}>
+              {/* <usernameInLocalStorgeDescription> this piece of code
+             is for checking user is defined or not. </usernameInLocalStorgeDescription> */}
+              {typeof window !== "undefined"
                 ? JSON.parse(localStorage.getItem("user")).username
-                : "Unknowen"
-              : "Unknowen"}
-          </h5>
-          <h5 className={styles.name}>
-            {typeof window !== "undefined"
-              ? localStorage.getItem("user") !== null
+                : "Unknowen"}
+            </h5>
+            <h5 className={styles.name}>
+              {typeof window !== "undefined"
                 ? JSON.parse(localStorage.getItem("user")).fullname
-                : "Unknowen"
-              : "Unknowen"}
-          </h5>
-        </div>
-        <div className={styles.switch_div}>
-          <button
-            onClick={() => {
-              alert("This feature is disabled.");
-            }}
-            className={styles.switch_button}
-          >
-            Switch
-          </button>
-        </div>
-      </section>
-      <section className={styles.follow_suggestions}>
-        <header className={styles.header}>
-          <h4 className={styles.header_title}>Suggestions For You</h4>
-          <h4 className={styles.see_all}>See All</h4>
-        </header>
-        {SuggestionsDB.map((suggestion, index) => (
-          <Suggestion
-            key={index}
-            porofile={suggestion.porofile}
-            username={suggestion.username}
-            detail={suggestion.detail}
-          />
-        ))}
-      </section>
-      <section className={styles.links_div}>
-        {links.map((link) => (
-          <a key={link.title} href={link.href} className={styles.link}>
-            {link.title}
-          </a>
-        ))}
-      </section>
-      <section className={styles.copyright}>
-        © {date.getUTCFullYear()} INSTAGRAM FROM META
-      </section>
-    </aside>
+                : "Unknowen"}
+            </h5>
+          </div>
+          <div className={styles.switch_div}>
+            <button
+              onClick={() => {
+                alert("This feature is disabled.");
+              }}
+              className={styles.switch_button}
+            >
+              Switch
+            </button>
+          </div>
+        </section>
+        <section className={styles.follow_suggestions}>
+          <header className={styles.header}>
+            <h4 className={styles.header_title}>Suggestions For You</h4>
+            <h4 className={styles.see_all}>See All</h4>
+          </header>
+          {SuggestionsDB.map((suggestion, index) => (
+            <Suggestion
+              key={index}
+              porofile={suggestion.porofile}
+              username={suggestion.username}
+              detail={suggestion.detail}
+            />
+          ))}
+        </section>
+        <section className={styles.links_div}>
+          {links.map((link) => (
+            <a key={link.title} href={link.href} className={styles.link}>
+              {link.title}
+            </a>
+          ))}
+        </section>
+        <section className={styles.copyright}>
+          © {date.getUTCFullYear()} INSTAGRAM FROM META
+        </section>
+      </aside>
+    </LoginHandler>
   );
 }
 

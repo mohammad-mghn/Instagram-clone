@@ -1,16 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
-
-import posts from "./posts.module.css";
+import React, { useEffect } from "react";
 
 import Post from "../post/post";
 function Posts(props) {
+  useEffect(() => {
+    if (localStorage.getItem("saved") === null) {
+      localStorage.setItem("saved", JSON.stringify({ Posts: [] }));
+      console.log("Asfd");
+    }
+  }, []);
   return (
-    <div className={posts.cantainer}>
+    <section>
       {props.posts.map((post) => {
         return <Post key={post.id} post={post} />;
       })}
-    </div>
+    </section>
   );
 }
 

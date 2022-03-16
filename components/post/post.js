@@ -1,39 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useRef, useEffect } from "react";
-import post from "./post.module.css";
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation, Pagination, Keyboard } from "swiper";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en.json";
-import EmojiBox from "../emoji_box/emoji_box";
+
 import { useRouter } from "next/router";
 
+import post from "./post.module.css";
+
+import EmojiBox from "../emoji_box/emoji_box";
+
+import { Navigation, Pagination, Keyboard } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en.json";
+
 function Post(props) {
-  useEffect(() => {
-    if (localStorage.getItem("savedPosts") === null) {
-      localStorage.setItem(
-        "savedPostsJson",
-        JSON.stringify({ savedPosts: [] })
-      );
-    }
-  }, []);
   TimeAgo.addLocale(en);
   const timeAgo = new TimeAgo("en-US");
+
+  const date = new Date();
 
   const router = useRouter();
 
   const comment = useRef(null);
 
-  const date = new Date();
-
   const [captionMoreEnabled, setCaptionMoreEnabled] = useState(false);
   const [stickers, setStickers] = useState(false);
   const [saved, setSaved] = useState(false);
   const [liked, setLiked] = useState(false);
-  const [menu, setMenu] = useState(false);
   const [like, setLike] = useState(
     props.post.like === undefined ? 0 : props.post.like
   );
@@ -45,6 +40,15 @@ function Post(props) {
     props.post.comments === undefined ? [] : props.post.comments
   );
   const newDate = date.getTime() - time;
+
+  useEffect(() => {
+    if (localStorage.getItem("saved") !== null) {
+      if (localStorage.getItem("saved").includes(props.post.id)) {
+        setSaved(true);
+      }
+    }
+  }, []);
+
   return (
     <>
       <div className={post.post}>
@@ -79,9 +83,6 @@ function Post(props) {
             role="img"
             viewBox="0 0 24 24"
             width="24"
-            onClick={() => {
-              setMenu(true);
-            }}
           >
             <circle cx="12" cy="12" r="1.5"></circle>
             <circle cx="6" cy="12" r="1.5"></circle>
@@ -249,39 +250,36 @@ function Post(props) {
                 viewBox="0 0 24 24"
                 width="24"
                 onClick={() => {
+                  console.log(saved);
                   if (saved) {
-                    let savedPostsJson = JSON.parse(
-                      localStorage.getItem("savedPostsJson")
-                    );
-                    savedPostsJson.savedPosts.map((post, index) => {
-                      // console.log(post.id === props.post.id, post, props.post);
-                      if (post.id === props.post.id) {
-                        console.log("yeas");
-                        savedPostsJson.savedPosts.splice(index, 1);
-                        console.log(savedPostsJson, "removerd");
-                        localStorage.setItem(
-                          "savedPostsJson",
-                          JSON.stringify(savedPostsJson)
-                        );
-                      }
-                      console.log(
-                        JSON.parse(localStorage.getItem("savedPostsJson"))
-                      );
-                    });
-                    setSaved(false);
+                    var savedPos = JSON.parse(localStorage.getItem("saved"));
+                    console.log("saveddddd", savedPos);
+                    var index = savedPos.indexOf(props.post.id);
+                    if (index > -1) {
+                      savedPos.splice(index, 1);
+                      localStorage.setItem("saved", JSON.stringify(savedPos));
+                      console.log("unsaved", savedPos);
+                      setSaved(false);
+                    }
                   } else {
-                    const savedPosts = JSON.parse(
-                      localStorage.getItem("savedPostsJson")
-                    );
-                    savedPosts.savedPosts.push(props.post);
-                    localStorage.setItem(
-                      "savedPostsJson",
-                      JSON.stringify(savedPosts)
-                    );
-                    console.log(
-                      JSON.parse(localStorage.getItem("savedPostsJson"))
-                    );
-                    setSaved(true);
+                    if (
+                      JSON.parse(localStorage.getItem("saved")).Posts ===
+                      undefined
+                    ) {
+                      var save = JSON.parse(localStorage.getItem("saved"));
+                      console.log("saved", save);
+                      save.push(props.post.id);
+                      localStorage.setItem("saved", JSON.stringify(save));
+                      setSaved(true);
+                    } else {
+                      var save = JSON.parse(
+                        localStorage.getItem("saved")
+                      ).Posts;
+                      console.log("saved", save);
+                      save.push(props.post.id);
+                      localStorage.setItem("saved", JSON.stringify(save));
+                      setSaved(true);
+                    }
                   }
                 }}
               >

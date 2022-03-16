@@ -61,6 +61,7 @@ function Emailsignup() {
       emailInput.current.value = "";
       fullNameInput.current.value = "";
       usernameInput.current.value = "";
+      localStorage.setItem("saved", JSON.stringify({ Posts: [] }));
       localStorage.setItem("user", JSON.stringify(user));
       router.replace("/");
     } else {
