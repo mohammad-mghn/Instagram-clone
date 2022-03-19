@@ -4,17 +4,17 @@ export default async function handler(req, res) {
     "mongodb+srv://vito_geeks:santur9292@cluster0.uv8jh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
   );
   const db = client.db();
-  console.log("request", req.body.postID);
   const postsCollection = db.collection("posts");
 
-  const postsGettedCollection = await postsCollection
+  // In monogoDB we don't IDs are a simple string it's kind of module
+  // so to find post with its ID we have to add ObectId from mongodb
+  const postDocuments = await postsCollection
     .find({ _id: ObjectId(req.body.id) })
     .toArray();
 
-  console.log("fetch", postsGettedCollection);
   res.status(200).json(
     JSON.stringify(
-      postsGettedCollection.map((post) => ({
+      postDocuments.map((post) => ({
         username: post.username,
         image: post.image,
         id: post._id.toString(),

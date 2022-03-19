@@ -28,7 +28,7 @@ function Post(props) {
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
   const [captionMoreEnabled, setCaptionMoreEnabled] = useState(false);
-  const [stickers, setStickers] = useState(false);
+  const [stickersBox, setstickersBox] = useState(false);
   const [postButtonStatus, setPostButtonStatus] = useState("");
   const [CommentLentgh, setCommentLentgh] = useState(
     props.post.comments === undefined ? [] : props.post.comments
@@ -38,6 +38,7 @@ function Post(props) {
   const newDate = date.getTime() - time;
 
   useEffect(() => {
+    // this useEffect part is for setting saved default status
     if (localStorage.getItem("saved") !== null) {
       if (localStorage.getItem("saved").includes(props.post.id)) {
         setSaved(true);
@@ -46,6 +47,7 @@ function Post(props) {
   }, []);
 
   useEffect(() => {
+    // this useEffect part is for setting like default status
     var index = props.post.like.indexOf(
       JSON.parse(localStorage.getItem("user")).username
     );
@@ -55,6 +57,8 @@ function Post(props) {
   }, []);
 
   const likeHandler = async () => {
+    // for liking and disliking this piece of code check if
+    // user liked or not .after that send POST request to /api/updateLike
     if (liked) {
       setLiked(false);
       var index = props.post.like.indexOf(
@@ -112,7 +116,9 @@ function Post(props) {
   };
 
   const commentHandler = async () => {
-    setStickers(false);
+    // first, we set stickersBoxBox to false to close it.
+    // then send a POST request to api/updateComments
+    setstickersBox(false);
     if (comment.current.value !== "") {
       setPostButtonStatus("");
       props.post.comments.push(comment.current.value);
@@ -243,7 +249,7 @@ function Post(props) {
                   ></path>
                 </svg>
               ) : (
-                ""
+                <></>
               )}
             </div>
             <div>
@@ -316,16 +322,15 @@ function Post(props) {
               {props.post.username}
             </span>{" "}
             <span className={post.caption_text}>
-              {" "}
               {captionMoreEnabled
                 ? props.post.caption
                 : props.post.caption.slice(0, 47)}
               {captionMoreEnabled ? (
-                ""
+                <></>
               ) : props.post.caption.slice(0, 65).length >= 65 ? (
                 <span className={post.dots}>...</span>
               ) : (
-                ""
+                <></>
               )}
             </span>{" "}
             {props.post.caption.length >= 82 ? (
@@ -342,7 +347,7 @@ function Post(props) {
                 {captionMoreEnabled ? "less" : "more"}
               </button>
             ) : (
-              ""
+              <></>
             )}
           </div>
           <div
@@ -351,11 +356,13 @@ function Post(props) {
             }}
             className={post.comments}
           >
-            {!props.post.comments
-              ? ""
-              : props.post.comments.length === 0
-              ? ""
-              : `View all ` + props.post.comments.length + ` comments`}
+            {!props.post.comments ? (
+              <></>
+            ) : props.post.comments.length === 0 ? (
+              <></>
+            ) : (
+              `View all ` + props.post.comments.length + ` comments`
+            )}
           </div>
           <div className={post.date}>
             {timeAgo.format(Date.now() - newDate).toLocaleUpperCase()}
@@ -372,10 +379,10 @@ function Post(props) {
                 viewBox="0 0 24 24"
                 width="24"
                 onClick={() => {
-                  if (stickers) {
-                    setStickers(false);
+                  if (stickersBox) {
+                    setstickersBox(false);
                   } else {
-                    setStickers(true);
+                    setstickersBox(true);
                   }
                 }}
               >
@@ -392,7 +399,7 @@ function Post(props) {
                     setPostButtonStatus(comment.current.value);
                   }}
                   onClick={() => {
-                    setStickers(false);
+                    setstickersBox(false);
                   }}
                 />
               </div>
@@ -408,11 +415,11 @@ function Post(props) {
               </button>
             </div>
           ) : (
-            ""
+            <></>
           )}
         </section>
       </div>
-      {stickers ? (
+      {stickersBox ? (
         <div className={post.emoji_box}>
           <EmojiBox
             array="bottom"
@@ -423,7 +430,7 @@ function Post(props) {
           />
         </div>
       ) : (
-        ""
+        <></>
       )}
     </>
   );
