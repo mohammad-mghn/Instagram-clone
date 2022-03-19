@@ -8,6 +8,7 @@ export default async function handler(req, res) {
   const postsCollection = db.collection("posts");
   const postsGettedCollection = await postsCollection.find({}).toArray();
   // console.log("fetch", postsGettedCollection);
+  console.log(postsGettedCollection);
   res.status(200).json(
     JSON.stringify(
       postsGettedCollection.map((post) => ({

@@ -9,6 +9,7 @@ function Posts(props) {
       console.log("Asfd");
     }
   }, []);
+  console.log(props.posts);
   return (
     <section>
       {props.posts.map((post) => {

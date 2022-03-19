@@ -25,7 +25,7 @@
   height: 100%;
   cursor: pointer;
 }
-.username__location_container {
+.username_location_container {
   width: 80%;
   margin-left: 1rem;
   overflow: hidden;

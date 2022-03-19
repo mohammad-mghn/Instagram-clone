@@ -112,7 +112,7 @@ function Select() {
               : "Unknowen",
           location: locations,
           caption: captionValue === "0" ? "" : captionValue,
-          like: 0,
+          like: [],
           comments: comments,
           date: date.getTime(),
           user_porofile:
@@ -141,7 +141,7 @@ function Select() {
           : "Unknowen",
       location: locations,
       caption: captionValue === "0" ? "" : captionValue,
-      like: 0,
+      like: [],
       comments: comments,
       date: date.getTime(),
       user_porofile:
