@@ -85,7 +85,11 @@ function ShareComponent(props) {
             <img
               className={styles.porofile_img}
               src={
-                "https://mohagheghian.netlify.app/static/media/porofile.2a72b316.png"
+                typeof window !== "undefined"
+                  ? localStorage.getItem("user") !== null
+                    ? JSON.parse(localStorage.getItem("user")).porofile_img
+                    : "https://mohagheghian.netlify.app/static/media/porofile.2a72b316.png"
+                  : "https://mohagheghian.netlify.app/static/media/porofile.2a72b316.png"
               }
               alt=""
             />
