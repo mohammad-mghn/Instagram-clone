@@ -60,12 +60,16 @@ function FollowSuggest() {
               {/* <usernameInLocalStorgeDescription> this piece of code
              is for checking user is defined or not. </usernameInLocalStorgeDescription> */}
               {typeof window !== "undefined"
-                ? JSON.parse(localStorage.getItem("user")).username
+                ? JSON.parse(localStorage.getItem("user")) === null
+                  ? "Unknowen"
+                  : JSON.parse(localStorage.getItem("user")).username
                 : "Unknowen"}
             </h5>
             <h5 className={styles.name}>
               {typeof window !== "undefined"
-                ? JSON.parse(localStorage.getItem("user")).fullname
+                ? JSON.parse(localStorage.getItem("user")) === null
+                  ? "Unknowen"
+                  : JSON.parse(localStorage.getItem("user")).fullname
                 : "Unknowen"}
             </h5>
           </div>

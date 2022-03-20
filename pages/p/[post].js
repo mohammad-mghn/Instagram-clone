@@ -1,20 +1,33 @@
-import React, { useState } from "react";
+import React from "react";
+
+import Head from "next/head";
+
 import { MongoClient, ObjectId } from "mongodb";
+
+import LoginHandler from "../../modules/LoginHandler/loginHandler";
 import Specificpost from "../../components/SpecificPost/specificPost";
 function Post(props) {
-  return (
-    <div
-      style={{
-        position: "absolute",
-        top: "3.65rem",
-        backgroundColor: "rgb(250, 250, 250)",
-        width: "100%",
-        height: "calc(100vh - 3.65rem)",
-      }}
-    >
-      <Specificpost post={props.post[0]} />
-    </div>
-  );
+  if (props.post !== undefined) {
+    return (
+      <LoginHandler>
+        <Head>
+          <title>Instagram</title>
+        </Head>
+        <div
+          style={{
+            position: "absolute",
+            top: "3.65rem",
+            backgroundColor: "rgb(250, 250, 250)",
+            width: "100%",
+            height: "calc(100vh - 3.65rem)",
+          }}
+        >
+          <Specificpost post={props.post[0]} />
+        </div>
+      </LoginHandler>
+    );
+  }
+  return <></>;
 }
 
 export default Post;
@@ -31,7 +44,7 @@ export async function getStaticPaths({ router }) {
     paths: postsGettedCollection.map((postu) => {
       return { params: { post: postu._id.toString() } };
     }),
-    fallback: true, // false or 'blocking'
+    fallback: true,
   };
 }
 export async function getStaticProps(context) {

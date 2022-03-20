@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
-import style from "../SpecificPost/specificpost.module.css";
+import style from "../components/SpecificPost/specificpost.module.css";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en.json";
 function Comment(props) {
@@ -18,7 +18,7 @@ function Comment(props) {
       <div className={style.porofile_section}>
         <div className={style.comment_porofile_container_in_caption}>
           <img
-            src="https://www.shareicon.net/data/256x256/2017/05/30/886553_user_512x512.png"
+            src={props.comment.porofile_img}
             alt=""
             className={style.porofile}
             onClick={() => {
@@ -28,8 +28,10 @@ function Comment(props) {
         </div>
       </div>
       <div className={style.comment_caption_section}>
-        <span className={style.username_in_caption}>{props.post.username}</span>{" "}
-        <span className={style.caption_text}>{props.comment}</span>
+        <span className={style.username_in_caption}>
+          {props.comment.username}
+        </span>{" "}
+        <span className={style.caption_text}>{props.comment.text}</span>
         <div className={style.information_div}>
           <div className={style.date}>
             {timeAgo.format(Date.now() - newDate)}

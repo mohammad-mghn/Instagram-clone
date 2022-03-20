@@ -121,16 +121,28 @@ function Post(props) {
     setstickersBox(false);
     if (comment.current.value !== "") {
       setPostButtonStatus("");
-      props.post.comments.push(comment.current.value);
+      const commentData = {
+        text: comment.current.value,
+        username:
+          typeof window !== "undefined"
+            ? JSON.parse(localStorage.getItem("user")).username
+            : "unknowen",
+        porofile_img:
+          typeof window !== "undefined"
+            ? JSON.parse(localStorage.getItem("user")).porofile_img
+            : "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PDw8PDw8PDw0PDw8PDw8PDQ8PDQ8PFRUWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQYC/8QAFhABAQEAAAAAAAAAAAAAAAAAAAER/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAL/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDTgqkoAAAAAAACiACoAoIAKACAAKCAAAAAAC4AgAAAAAAEAAAVFBAAVBQQUBBQEAAAAAAABRAAAAAAAAAFQAVFQBUUASKAIoAAIKgAAAAAAGgAAAAAAAAAAAKgCiAKAAAAgAAAAAAAAAAAAAAAAAAAAoICgiooAigAAgAAKCAoIAAAAAAAACggqAAACoCiKCKAAAAAIKgAAAAAqAAoIAAogCgCAAAAAAKgAKAigAACKgAAAAAACgAYACKAAgAKAIqAqKAGCAqKgAAAAAACgAACKACKgAAKACCoAoAAAAAAAgKCAAAAAoAigAAAAgoCaKAgKAioAoAAAAACAKgAAAAAAAKIAoAiooIogAuAIAAACgAiooAFAEAAAAAAAAACCgIKCAAAoAYAioAoAAAAAAigiooAIAqAAKCAAAoCCgioAoAIKAgACoAqCggqAoAIKAIqAAAAAqAABAVAAABRAFABAAAABUoCoACgIKAIoCAAAAAAAAAAAAAACgIoAgAAAKgAqgDlQAqAAAAUAVAAUAQoAqUAAAUAH//Z",
+      };
+      props.post.comments.push(commentData);
       console.log("post:", JSON.stringify(props.post));
       setCommentLentgh((CommentLentgh += comment.current.value));
-      await fetch("/api/updateComments", {
+      const fetching = await fetch("/api/updateComments", {
         method: "POST",
         body: JSON.stringify(props.post),
         headers: {
           "Content-type": "application/json",
         },
       });
+      await fetching.json();
     }
     comment.current.value = "";
   };
@@ -368,52 +380,60 @@ function Post(props) {
             {timeAgo.format(Date.now() - newDate).toLocaleUpperCase()}
           </div>
           {props.post.comments ? (
-            <div className={post.add_comment_div}>
-              <svg
-                aria-label="Emoji"
-                className={post.sticker}
-                color="#262626"
-                fill="#262626"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                onClick={() => {
-                  if (stickersBox) {
-                    setstickersBox(false);
-                  } else {
-                    setstickersBox(true);
-                  }
-                }}
-              >
-                <path d="M15.83 10.997a1.167 1.167 0 101.167 1.167 1.167 1.167 0 00-1.167-1.167zm-6.5 1.167a1.167 1.167 0 10-1.166 1.167 1.167 1.167 0 001.166-1.167zm5.163 3.24a3.406 3.406 0 01-4.982.007 1 1 0 10-1.557 1.256 5.397 5.397 0 008.09 0 1 1 0 00-1.55-1.263zM12 .503a11.5 11.5 0 1011.5 11.5A11.513 11.513 0 0012 .503zm0 21a9.5 9.5 0 119.5-9.5 9.51 9.51 0 01-9.5 9.5z"></path>
-              </svg>
-
-              <div className={post.add_comment}>
-                <input
-                  type="text"
-                  placeholder="Add a comment..."
-                  className={post.add_comment_input}
-                  ref={comment}
-                  onChange={() => {
-                    setPostButtonStatus(comment.current.value);
-                  }}
+            <form
+              action=""
+              onSubmit={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <div className={post.add_comment_div}>
+                <svg
+                  aria-label="Emoji"
+                  className={post.sticker}
+                  color="#262626"
+                  fill="#262626"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
                   onClick={() => {
-                    setstickersBox(false);
+                    if (stickersBox) {
+                      setstickersBox(false);
+                    } else {
+                      setstickersBox(true);
+                    }
                   }}
-                />
+                >
+                  <path d="M15.83 10.997a1.167 1.167 0 101.167 1.167 1.167 1.167 0 00-1.167-1.167zm-6.5 1.167a1.167 1.167 0 10-1.166 1.167 1.167 1.167 0 001.166-1.167zm5.163 3.24a3.406 3.406 0 01-4.982.007 1 1 0 10-1.557 1.256 5.397 5.397 0 008.09 0 1 1 0 00-1.55-1.263zM12 .503a11.5 11.5 0 1011.5 11.5A11.513 11.513 0 0012 .503zm0 21a9.5 9.5 0 119.5-9.5 9.51 9.51 0 01-9.5 9.5z"></path>
+                </svg>
+
+                <div className={post.add_comment}>
+                  <input
+                    type="text"
+                    placeholder="Add a comment..."
+                    className={post.add_comment_input}
+                    ref={comment}
+                    onChange={() => {
+                      setPostButtonStatus(comment.current.value);
+                    }}
+                    onClick={() => {
+                      setstickersBox(false);
+                    }}
+                  />
+                </div>
+                <button
+                  className={
+                    postButtonStatus === ""
+                      ? post.share_comment_button_disabled
+                      : post.share_comment_button
+                  }
+                  onClick={commentHandler}
+                  type="submit"
+                >
+                  Post
+                </button>
               </div>
-              <button
-                className={
-                  postButtonStatus === ""
-                    ? post.share_comment_button_disabled
-                    : post.share_comment_button
-                }
-                onClick={commentHandler}
-              >
-                Post
-              </button>
-            </div>
+            </form>
           ) : (
             <></>
           )}

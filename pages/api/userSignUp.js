@@ -18,7 +18,7 @@ async function Handler(req, res) {
 
   if (userEmailDocument.length === 0 && userUsernameDocument.length === 0) {
     res.status(200).json({ message: "successful" });
-    var result = await usersCollection.insertOne(data);
+    await usersCollection.insertOne(data);
   } else {
     res.status(200).json({ message: "unsuccessful" });
   }

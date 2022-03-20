@@ -76,7 +76,7 @@
 }
 .comments_and_caption_section {
   width: 21rem;
-  height: 21.75rem;
+  height: 22.5rem;
   overflow-y: scroll;
 }
 .comments_and_caption_section::-webkit-scrollbar {

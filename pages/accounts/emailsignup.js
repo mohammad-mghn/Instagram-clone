@@ -10,22 +10,20 @@ import { useRouter } from "next/router";
 import style from "../../styles/signup.module.css";
 
 function Emailsignup() {
-  const router = useRouter();
+  const [loginError, setLoginError] = useState(false);
+  const [passwordIsShowing, setPasswordIsShowing] = useState(false);
+  const [loginEmailButtonStatus, setLoginEmailButtonStatus] = useState("");
+  const [loginPasswordButtonStatus, setLoginPasswordButtonStatus] =
+    useState("");
 
   const emailInput = useRef();
   const fullNameInput = useRef();
   const usernameInput = useRef();
   const passwordInput = useRef();
 
-  var date = new Date();
+  const router = useRouter();
 
-  const [Porofile, setPorofile] = useState("data");
-  const [bio, setBio] = useState("");
-  const [loginError, setLoginError] = useState(false);
-  const [passwordIsShowing, setPasswordIsShowing] = useState(false);
-  const [loginEmailButtonStatus, setLoginEmailButtonStatus] = useState("");
-  const [loginPasswordButtonStatus, setLoginPasswordButtonStatus] =
-    useState("");
+  var date = new Date();
 
   const SignUpHandler = async () => {
     var URL = prompt("Enter image URl 👇👇👇");
@@ -55,7 +53,6 @@ function Emailsignup() {
     });
 
     const response = await fetching.json();
-    console.log(response);
     if (response.message === "successful") {
       passwordInput.current.value = "";
       emailInput.current.value = "";

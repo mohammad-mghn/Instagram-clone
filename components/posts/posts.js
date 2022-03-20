@@ -6,7 +6,6 @@ function Posts(props) {
   useEffect(() => {
     if (localStorage.getItem("saved") === null) {
       localStorage.setItem("saved", JSON.stringify({ Posts: [] }));
-      console.log("Asfd");
     }
   }, []);
   console.log(props.posts);
