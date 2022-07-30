@@ -1,6 +1,6 @@
 <h1><img src="https://emojis.slackmojis.com/emojis/images/1623621175/44803/instagram.png?1623621175" width="30"/> Instargam Clone</h1>
 
-<img src="https://emojis.slackmojis.com/emojis/images/1643514214/1804/aaw_yeah.gif?16435142145" width="10"/> [Vito-mohagheghian](https://github.com/vito-mohagheghian) developed this website and the technologies used in this project include:
+<img src="https://emojis.slackmojis.com/emojis/images/1643514214/1804/aaw_yeah.gif?16435142145" width="20"/> [Vito-mohagheghian](https://github.com/vito-mohagheghian) developed this website and the technologies used in this project include:
 
 First, run the development server:
 
